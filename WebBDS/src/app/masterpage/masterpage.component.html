@@ -1,0 +1,38 @@
+<div class="wrapper">
+    <div class="header">
+        <div>
+            <div><img class="logo" src="assets/img/logo.png" routerLink='/Home' routerLinkActive='active'></div>
+        </div>
+        <div class="ul">
+            <div class="li">
+                <div>Nhà đất bán</div>
+            </div>
+            <div class="li">
+                <div>Nhà đất cho thuê</div>
+            </div>
+            <a routerLink='/News'>
+                <div class="li">
+                    <div>Tin Tức</div>
+                </div>
+            </a>
+            <div class="li">
+                <div>Dự Án</div>
+            </div>
+            <div class="li">
+                <div>Cần mua/ Cần thuê</div>
+            </div>
+        </div>
+        <div class="ul1">
+            <a routerLink='/Main/Login'>
+                <div class="li1"> Đăng Ký/Đăng Nhập</div>
+            </a>
+            <a routerLink='/PostNews/Sell'>
+                <div class="li1">Đăng Tin</div>
+            </a>
+        </div>
+    </div>
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+    <div class="footer">footer</div>
+</div>
