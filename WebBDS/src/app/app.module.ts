@@ -14,6 +14,10 @@ import { BuyComponent } from './postnews/buy/buy.component';
 import { SellComponent } from './postnews/sell/sell.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NewsComponent } from './news/news.component';
+import { NewsdetailComponent } from './newsdetail/newsdetail.component';
+import { ProjectComponent} from './project/project.component';
+import { ChangepasswordComponent} from './profile/changepassword/changepassword.component';
+import { ManagerpostnewsComponent } from './profile/managerpostnews/managerpostnews.component';
 
 @NgModule({
    declarations: [
@@ -28,7 +32,11 @@ import { NewsComponent } from './news/news.component';
       BuyComponent,
       SellComponent,
       ProfileComponent,
-      NewsComponent
+      NewsComponent,
+      NewsdetailComponent,
+      ProjectComponent,
+      ChangepasswordComponent,
+      ManagerpostnewsComponent
    ],
    imports: [
       BrowserModule,

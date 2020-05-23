@@ -12,8 +12,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
+  
   onClick(){
-    this.router.navigateByUrl('/Profile');
+    this.router.navigateByUrl('/Profile/ManagerPostNews');
   }
-
 }

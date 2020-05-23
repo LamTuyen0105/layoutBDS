@@ -1,26 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 *{
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .wrapper{
-    margin: auto;
+  margin: auto;
 }
 
 .header{
-    background-color: #FFFFFF;
-    position: sticky;
-    top: 0px;
-    width: 100%;
-    box-shadow: 0 1px 10px 0 rgba(0,0,0,0.3);
+  background-color: #FFFFFF;
+  position: sticky;
+  top: 0px;
+  width: 100%;
+  box-shadow: 0 1px 10px 0 rgba(0,0,0,0.3);
 }
 
 .logo {
-    width: 50px; 
-    margin: 5px; 
-    padding: 10px;  
+  width: 50px; 
+  margin: 5px; 
+  padding: 10px;  
 }
+
 div{
   display: block;
 }
@@ -32,6 +33,7 @@ div{
   top:0px;
   margin: 15px 0px 15px 0px;
 }
+
 .li{
   padding-right: 8px;
   margin-right: 5px;
@@ -40,6 +42,7 @@ div{
   width: auto;
   top: 0px;
 }
+
 .ul1{
   position: absolute;
   float: right;
@@ -47,6 +50,7 @@ div{
   top:0px;
   margin: 15px 0px 15px 0px;
 }
+
 .li1{
   margin: 0 2px;
   float: left;
@@ -56,55 +60,51 @@ div{
 }
 
 .footer{
-    height: 250px;
-    clear: both;
-    background-color: darkblue;
+  height: 250px;
+  clear: both;
+  background-color: darkblue;
 }
 
 .menu{
-    height: 450px;
-    background-image: url(assets/img/background.jpg);    
-    text-align: center;
+  height: 450px;
+  background-image: url(assets/img/background.jpg);    
+  text-align: center;
 }
 
 .left{
-    width: 10%;
-    height: 500px;
-    float: left;
-    background-color: #FFFFFF;
+  width: 10%;
+  height: 500px;
+  float: left;
+  background-color: #FFFFFF;
 }
 
 .contents{
-    width: 100%;
-    padding-left: 128px;
-    padding-right: 128px;
-    margin-left: 0px;
-    margin-right: 0px;
-    background-color: #FFFFFF;
+  width: 100%;
+  padding-left: 128px;
+  padding-right: 128px;
+  margin-left: 0px;
+  margin-right: 0px;
+  background-color: #FFFFFF;
 }
 
 .row{
-    padding: 10px 0;
-    margin:0 -5px;
+  padding: 10px 0;
+  margin:0 -5px;
 }
 
 .sub-box{ 
-    border: 1px solid gray;
-}
-
-.content-list .list .sub-box img{
-  width:100%;
+  border: 1px solid gray;
 }
 
 .img-list{
-    align-items: center;
+  align-items: center;
 }
 
 .info{opacity: 1;
-    background-color: transparent;
-    color:#000;
-    text-align: center;
-    padding: 10px;
+  background-color: transparent;
+  color:#000;
+  text-align: center;
+  padding: 10px;
 }
 
 .col-lg-6,.col-lg-3,.col-lg-9,.col-6,.col-3{
@@ -115,27 +115,17 @@ div{
 .col-lg-9 P{
   text-align: center;
 }
-.content-list .list .info h4{color:green}
-.content-list .list .info b{color:red}
 
-.content-list .list .info button{ 
-    border-radius: 3px;
-    width: 100px;
-    border: none;
-}
-.content-list .list .info button:hover{
-    cursor: pointer;
-}
 .row img{
-    width: 100%;
-    height: 175px;
+  width: 100%;
+  height: 175px;
 }
 
 .right{
-    width: 10%;
-    height: 500px;
-    float: right;
-    background-color: #FFFFFF;
+  width: 10%;
+  height: 500px;
+  float: right;
+  background-color: #FFFFFF;
 }
 
 .find{
@@ -153,27 +143,66 @@ div{
   border: 1px solid #636b7b
 }
 
-.borders{
-  width: 70%;
-  float: left;
+.boder{
+  width: 800px;
+  height: 401px;
+  background-color: #eee;
 }
 
-.margin{
-  margin-top: 5px;
-  margin-bottom: 5px;
+.image{
+  max-width: 800px;
+  height: 400px;
 }
-.padding{
-  padding: 10px;
+
+.fontprices{
+  color: #c90927;
+  font-weight: bold;
+  line-height: 25px;
+  font-size: 30px;
+}
+
+.fontsquare{
+  color: #000;
+  line-height: 25px;
+  font-size: 26px;
+}
+
+.col{
+  position: unset;
+  padding-left: 5px;
+}
+
+.container{
+  padding: 0;
+}
+
+hr{
+  margin-top: unset;
+}
+
+.like{
+  background: transparent;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  border: 1px solid #c90927;
+  border-radius: 20px;
+  padding: 5px 10px;
+  color: #c90927;
+}
+
+.like:hover{
+  background-color: rgba(255, 7, 7, 0.692);
 }
 
 .wapper {
-    display: flex;
-    align-items: center;
-    flex-direction: column; 
-    justify-content: center;
-    width: 100%;
-    padding: 20px;
-    background-color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column; 
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+  background-image: url(assets/img/bg.jpg);
   }
   
 .wapped-div {
@@ -240,7 +269,7 @@ div{
 }
 
 .tab-header h2:focus {
-    outline: none;
+  outline: none;
 }
 
 div.form-group {
@@ -264,7 +293,7 @@ div.form-group input.invalid{
 }
 
 input.form-control,input.form-control:focus{
-    border: 1px solid #636b7b;
+  border: 1px solid #636b7b;
 }
 
 input.form-control:focus{
@@ -318,6 +347,7 @@ button[type=submit].btn{
   color: #545d6a;
   border-bottom: 2px solid #fff;
 }
+
 .tab h2.active {
   color: black;
   border-bottom: 4px solid black;
@@ -375,7 +405,6 @@ button[type=submit].btn{
 .dropdown-list {
   padding: 3px 1px;
 }
-
 .textarea{
   width: 55%;
   height: 200px;
@@ -395,16 +424,16 @@ button[type=submit].btn{
  }
 
 .size{
-   width: 100px;
+  width: 100px;
  }
 
 .h04{
-   text-transform: uppercase;
-   color: blue;
+  text-transform: uppercase;
+  color: blue;
  }
 
 .font{
-   font-size: 1rem;
+  font-size: 1rem;
  }
 
 .grid-table
@@ -457,4 +486,29 @@ button[type=submit].btn{
 
 .w5{
   width: 95px;
+}
+
+.content{
+  display: flex;
+  flex-direction: row;
+}
+
+.content img{
+  float: left;
+  margin: 10px 10px 10px 0px;
+  border: 1px solid gray;
+  width: 150px;
+}
+
+.borders{
+  width: 70%;
+  float: left;
+}
+
+.margin{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.padding{
+  padding: 10px;
 }
