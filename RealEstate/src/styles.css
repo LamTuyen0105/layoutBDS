@@ -1,0 +1,234 @@
+/* You can add global styles to this file, and also import other style files */
+*{
+    margin: 0;
+    padding: 0;   
+    box-sizing: border-box; 
+    font-family: Helvetica;
+    font-style: normal;    
+    font-size: 16px;
+}
+
+.header{
+    width: 100%;    
+}
+
+.title1{
+    width: 100%;
+    height: 40px;
+    background-color: rgb(246, 125, 15);
+}
+
+.content{
+    background-color: #f5f5f5;
+}
+
+.footer{
+    width: 100%;
+    height: 40px;
+    background-color:rgb(246, 125, 15);
+    bottom: 0;
+}
+
+.col-lg3, .col-sm-6, .col-lg-6, .col-xl-2, .col-lg-4, .col-sm-4, .col-6{
+    padding: 5px;   
+}
+
+.fontsize-32{
+    font-size: 32px;
+}
+.img-list{
+    position: relative;
+}
+
+.type{
+    width: 96px;
+    height: 24px;
+    padding-right: 1rem;
+    background-color: rgb(246, 127, 15);
+    opacity: 0.7;
+    color: #ffffff;
+    top: 0;
+    right: 0;
+}
+
+.fontsize-12{
+    font-size: 12px;
+}
+
+.color{
+    color: #b3b3b3;
+}
+
+.colorsymbol{
+    color: #555555;
+}
+
+.cardimage{
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    top: 45%;
+}
+
+.btncircle{
+    width: 24px;
+    height: 24px;    
+    color: #ffffff;
+    border: none;
+}
+.btn-left{
+    background-color: rgb(51, 51, 51);
+    opacity: 0.4;
+}
+
+.btn-right{
+    right: 0;
+}
+
+.image{
+    width:100%;
+}
+
+.status{
+    width: 138px;
+    height: 24px;
+    padding: 0.2rem 0 0 0.75rem;
+    background-color: rgb(51, 51, 51);
+    opacity: 0.7;
+    color: #ffffff;
+    bottom: 0;
+}
+
+.card-body {
+    padding: 1rem 0.75rem 0.5rem 0.75rem;
+}
+
+.card-title{
+    color: #555555;
+    font-weight: bold;
+    height: 48px;
+    overflow: hidden;
+}
+
+.card:hover p{
+    color: #43A536;
+}
+
+.card-text{
+    margin-right: 5px;
+}
+
+.fontsize-14{
+    font-size: 14px;
+}
+
+.colortitle{
+    color: #43A536;
+}
+
+.symbol{
+ color: rgb(212, 212, 212);
+}
+
+.info{
+    width: 50%;
+}
+
+.price{
+    color: #F67D0F;
+}
+
+.like{
+    width: 50%;
+    text-align: end;
+}
+
+.heart:hover{
+    background-image: url(assets/img/heartfull.png);
+}
+
+.button{
+    flex: auto;
+}
+
+.btn-outline-orange{
+    color: #F67D0F;
+    border-color: rgb(246, 125, 15);
+    width: 126px;
+    height: 36px;
+}
+
+.btn-outline-orange:hover{
+    color: #F67D0F;
+}
+
+.margincontent{
+    margin-right: -10px;
+    margin-left: -10px;
+}
+
+.fontsize-24{
+    font-size: 24px;
+}
+
+.colortext{
+    color:rgba(85,85,85,1);
+}
+
+.pre-next{
+    top: 35%;
+    width: 100%;
+}
+
+.btn-left-new{
+    left: calc(0px - 25px);
+}
+
+.btn-right-new{
+    right: calc(0px - 25px);
+}
+
+
+.ads{
+    height: 240px;
+    background-color: rgb(191, 191, 191);
+}
+
+.fontsize-36{
+    font-size: 36px;
+}
+
+.colorads{
+    color: #ffffff;
+}
+
+.keytext{
+    background-color: cadetblue;
+    width: 180px;
+    height: 48px;
+}
+
+.keytext:hover{
+    color: #43A536;
+}
+
+@media screen and (max-width:992px){
+    .buy {
+        display: flex;
+        margin-top: 10px;
+    }
+    .reverse{
+        flex-direction: column-reverse;
+     }
+}
+
+@media screen and (max-width:1200px){
+    .mediacenter{
+        text-align: center;
+        overflow: scroll;
+    }
+    .mediacenter::-webkit-scrollbar{
+        display: none;
+    }
+}
+
