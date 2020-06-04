@@ -1,13 +1,134 @@
 <div class="header">
-<div class="title1"></div>
-<div class="title2"></div>
-</div>
-<div class="content">
-<div class="container">
-  <router-outlet></router-outlet>
-</div>
-</div>
-<div class="footer align-items-end">
-  <div>
+  <div class="title1">
+    <div class="container findboder colorads">
+      <div class="row">
+        <div class="col-lg-6 d-flex contact">
+          <div class="pr-3">
+            <img src="assets/img/phone.png" title="phone">&nbsp;1900 6474
+          </div>
+          <div class="">
+            <img src="assets/img/mail.png" title="email">&nbsp;info.realestate@dps.com.vn
+          </div>
+        </div>
+        <div class="col-lg-6 text-right e-contact">
+          <img class="pr-1" src="assets/img/skype.png" title="skype">
+          <img class="px-1" src="assets/img/fb.png" title="facebook">
+          <img class="px-1" src="assets/img/zalo.png" title="zalo">
+          <img class="pl-1" src="assets/img/youtube.png" title="youtube">
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+  <div class="title2 sticky-top">
+    <div class="container findboder">
+      <nav class="d-flex justify-content-between navbar navbar-expand-lg navbar-light menus paddingnavbar">
+        <a class="navbar-brand logo" href="#"><img src="assets/img/logoheader.png" title="logo"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+          aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse listmenu" id="navbarToggler">
+          <ul class="navbar-nav menu mr-auto mt-2 mt-lg-0 text-center paddingleft">
+            <li class="nav-item itemmenu active">
+              <a class="nav-link subitem" href="#">Nhà đất bán</a>
+            </li>
+            <span class="d-flex align-items-center colorsymbol1 hide">|</span>
+            <li class="nav-item itemmenu">
+              <a class="nav-link subitem" href="#">Nhà đất cho thuê</a>
+            </li>
+            <span class="d-flex align-items-center colorsymbol1 hide">|</span>
+            <li class="nav-item itemmenu ">
+              <a class="nav-link subitem" href="#">Cần mua</a>
+            </li>
+            <span class="d-flex align-items-center colorsymbol1 hide">|</span>
+            <li class="nav-item itemmenu">
+              <a class="nav-link subitem" href="#">Cần thuê</a>
+            </li>
+            <span class="d-flex align-items-center colorsymbol1 hide">|</span>
+            <li class="nav-item itemmenu">
+              <a class="nav-link subitem" href="#">Tin tức BĐS</a>
+            </li>
+          </ul>
+          <div class="addnew d-flex justify-content-between my-2 my-lg-0">
+            <div class="pr-3"><button class="btnpost background-organge colorads text-center">Đăng tin BĐS</button>
+            </div>
+            <div class="px-2"><img src="assets/img/profile.png" title="profile"></div>
+            <div class="px-1"><img src="assets/img/heart_mini.png" title="heart"></div>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+  </div>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="align-items-end">
+    <div class="container background-white colorsymbol py-5">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="mb-3"><img src="assets/img/logofooter.png" title="logo"></div>
+          <div class="mb-3">85/4 Nguyễn Thế Truyện, P. Tân Sơn Nhì, Q. Tân Phú, Tp. HCM</div>
+          <div class="mb-3">Email: info.realestate@dps.com.vn</div>
+          <div class="font-weight-bold mb-3">Hãy gọi cho chúng tôi để được tư vấn 24/7</div>
+          <div class="fontsize-24 price font-weight-bold mb-3">1900 6474</div>
+        </div>
+        <div class="col-lg-6">
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="font-weight-bold fontsize-14 mb-3">Về DPS</div>
+              <div class="fontsize-14 mb-3">Giới thiệu</div>
+              <div class="fontsize-14 mb-3">Tuyển dụng</div>
+              <div class="fontsize-14 mb-3">Liên hệ</div>
+              <div class="fontsize-14 mb-3">Thỏa thuận sử dụng</div>
+              <div class="fontsize-14 mb-3">Chính sách bảo mật</div>
+            </div>
+            <div class="col-lg-4">
+              <div class="font-weight-bold fontsize-14 mb-3">Dịch vụ của DPS.R.E</div>
+              <div class="fontsize-14 mb-3">Gửi BĐS miễn phí</div>
+              <div class="fontsize-14 mb-3">Thẩm định BĐS</div>
+              <div class="fontsize-14 mb-3">Thông tin pháp lý BĐS</div>
+              <div class="fontsize-14 mb-3">Thỏa thuận sử dụng</div>
+              <div class="fontsize-14 mb-3">Chính sách bảo mật</div>
+            </div>
+            <div class="col-lg-4">
+              <div class="font-weight-bold fontsize-14 mb-3">Hệ thống của DPS.R.E</div>
+              <div class="fontsize-14 mb-3">Nhà đất bán</div>
+              <div class="fontsize-14 mb-3">Nhà đất cho thuê</div>
+              <div class="fontsize-14 mb-3">Cần mua</div>
+              <div class="fontsize-14 mb-3">Cần thuê</div>
+              <div class="fontsize-14 mb-3">Cộng đồng BĐS DPS.R.E</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="font-weight-bold fontsize-14 mb-3">Tải app Bất động sản DPSRE miễn phí</div>
+          <div class="d-flex">
+            <div class="p-1"><img src="assets/img/android.png" title="android"></div>
+            <div class="p-1"><img src="assets/img/ios.png" title="ios"></div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="row">
+            <div class="col-lg-4 hide"></div>
+            <div class="col-lg-4 hide"></div>
+            <div class="col-lg-4">
+              <div class="font-weight-bold fontsize-14 mb-3">Liên hệ với chúng tôi</div>
+              <div>
+                <img class="p-1" src="assets/img/skype_b.png" title="skype">
+                <img class="p-1" src="assets/img/fb_b.png" title="facebook">
+                <img class="p-1" src="assets/img/zalo_b.png" title="zalo">
+                <img class="p-1" src="assets/img/youtube_b.png" title="youtube">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer justify-content-center d-flex align-items-center colorads">
+      <div class="fontsize-14">© 2019 DPS CO., LTD. All rights reserved.</div>
+    </div>
+  </div>
