@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-Masterpage',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MasterpageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
+  OnClick(){
+    this.router.navigateByUrl('/i/DangTin');
+  }
 }
+

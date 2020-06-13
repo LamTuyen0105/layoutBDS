@@ -9,7 +9,7 @@
           </li>
           <li class="nav-item itemfind" role="presentation">
             <a class="nav-link itemlink" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
-              aria-controls="pills-profile" aria-selected="false">Nhà đất bán</a>
+              aria-controls="pills-profile" aria-selected="false">Nhà đất thuê</a>
           </li>
         </ul>
         <div class="tab-content py-3 px-2" id="pills-tabContent">
@@ -139,8 +139,8 @@
         </div>
       </div>
     </div>
-    <div class="row ">
-      <div class="col-lg-3 col-sm-6">
+    <div class="row">
+      <div class="col-lg-3 col-sm-6 cursorpointer" (click)="OnClick()">
         <div class="card h-100">
           <div class="img-list">
             <div class="type position-absolute text-right align-self-end">
@@ -510,13 +510,13 @@
   <div class="py-3 w-100">
     <div class="row">
       <div class="col-lg-6">
-        <div class="colorsymbol">Danh sách địa điểm</div>
-        <div class="fontsize-24 font-weight-bold colorsymbol">Bất động sản nổi bật
+        <div class="color-5">Danh sách địa điểm</div>
+        <div class="fontsize-24 font-weight-bold color-5">Bất động sản nổi bật
         </div>
       </div>
       <div class="col-lg-6 align-self-center">
         <div class="d-flex flex-row justify-content-end">
-          <div class="fontsize-14 colorsymbol">Xem thêm ></div>
+          <div class="fontsize-14 color-5">Xem thêm ></div>
         </div>
       </div>
     </div>
@@ -541,6 +541,14 @@
         <div class="col-lg-2 col-sm-4 col-6">
           <img class="w-100" src="assets/img/TanBinh.png" title="TanBinh">
           <div class="colortext fontsize-14">Tân Bình, Hồ Chí Minh</div>
+        </div>
+        <div class="col-lg-2 col-sm-4 col-6">
+          <img class="w-100" src="assets/img/HoangMaiHaNoi.png" title="HoangMai">
+          <div class="colortext fontsize-14">Hoàng Mai, Hà Nội</div>
+        </div>
+        <div class="col-lg-2 col-sm-4 col-6">
+          <img class="w-100" src="assets/img/HoangMaiHaNoi.png" title="HoangMai">
+          <div class="colortext fontsize-14">Hoàng Mai, Hà Nội</div>
         </div>
         <div class="col-lg-2 col-sm-4 col-6">
           <img class="w-100" src="assets/img/HoangMaiHaNoi.png" title="HoangMai">
@@ -681,7 +689,7 @@
         <p>Cập nhật thông tin BĐS nhanh nhất cho bạn</p>
         <div class=" d-flex justify-content-center">
           <div class="input-group inputcontact mb-3">
-            <input type="text" class="form-control formcontract" placeholder="Nhập email của bạn"
+            <input type="email" class="form-control formcontract" placeholder="Nhập email của bạn"
               aria-label="Nhập email của bạn" aria-describedby="button-addon2">
             <div class="input-group-append">
               <button class="btn background-white btnhover btn-outline-success border-white" type="button"
