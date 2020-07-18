@@ -2,31 +2,37 @@
   <div class="card-header background-organge text-white text-center font-weight-bold fontsize-14">BỘ LỌC TÌM KIẾM</div>
   <div class="card-body">
     <select class="select color-3 mb-2">
-      <option value="1">Loại nhà đất</option>
+      <option value="0">Loại nhà đất</option>
+      <option *ngFor="let item of TypeOfProperty" value="{{item.id}}">{{item.name}}</option>
     </select>
     <select class="select color-3 mb-2">
-      <option value="1">Mức giá</option>
+      <option value="0">Mức giá</option>
     </select>
     <select class="select color-3 mb-2">
-      <option value="1">Diện tích</option>
+      <option value="0">Diện tích</option>
     </select>
     <select class="select color-3 mb-2">
-      <option value="1">Hướng</option>
+      <option value="0">Hướng</option>
+      <option *ngFor="let item of Direction" value="{{item.id}}">{{item.name}}</option>
     </select>
     <select class="select color-3 mb-2">
-      <option value="1">Số phòng</option>
+      <option value="0">Số phòng</option>
     </select>
     <select class="select color-3 mb-2">
-      <option value="1">Tình trạng</option>
+      <option value="0">Tình trạng</option>
+      <option *ngFor="let item of EvaluationStatus" value="{{item.id}}">{{item.name}}</option>
+    </select>
+    <select class="select color-3 mb-2" (change)="GetProvinceId($event)">
+      <option value="0">Trên toàn quốc</option>
+      <option *ngFor="let item of Province" value="{{item.id}}">{{item.name}}</option>
+    </select>
+    <select class="select color-3 mb-2" (change)="GetDistrictId($event)">
+      <option value="0">Quận/ Huyện</option>
+      <option *ngFor="let item of District" value="{{item.id}}">{{item.prefix}} {{item.name}}</option>
     </select>
     <select class="select color-3 mb-2">
-      <option value="1">Trên toàn quốc</option>
-    </select>
-    <select class="select color-3 mb-2">
-      <option value="1">Quận/ Huyện</option>
-    </select>
-    <select class="select color-3 mb-2">
-      <option value="1">Phường Xã</option>
+      <option value="0">Phường Xã</option>
+      <option *ngFor="let item of Ward" value="{{item.id}}">{{item.prefix}} {{item.name}}</option>
     </select>
     <div class="d-flex justify-content-center py-2">
       <button type="button" class="btn background-organge colorads text-center btnunhover h40">Tìm kiếm ngay</button>

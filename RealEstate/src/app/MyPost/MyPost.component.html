@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="py-3 w-100">
+    <div class="fontsize-32 font-weight-bold">Bất động sản của tôi</div>
+    <ul class="list-unstyled">
+      <li class="media mb-3 p-2 background-white cursorpointer d-flex align-items-center"
+        *ngFor="let item of userProperty">
+        <div class="row w-100">
+          <div class="col-lg-4 col-sm-12">
+            <div class="img-list">
+              <div class="type position-absolute text-right align-self-end">
+                <span class="fontsize-12">{{item.typeOfPropertyName}}</span>
+              </div>
+              <img class="image" src="assets/uploadimg/{{item.linkName}}" title="Home" />
+              <div class="status fontsize-12 position-absolute">{{item.evaluationStatusName}}</div>
+            </div>
+          </div>
+          <div class="col-lg-8 col-sm-12">
+            <div class="media-body">
+              <h5 class="mt-0 font-weight-bold">{{item.title}}</h5>
+              <div class="mb-1"><img src="assets/img/mapmarker.png" title="mapmarker">&nbsp;<small
+                  class="text-muted">{{item.districtName}}, {{item.provinceName}}</small>
+              </div>
+              <div class="d-flex mb-2">
+                <div class="card-text fontsize-14"><img src="assets/img/location.png"
+                    title="location">&nbsp;{{item.directionName}} <span class="symbol">|</span></div>
+                <div class="card-text fontsize-14"><img src="assets/img/area.png" title="area">&nbsp;{{item.area}}
+                  m2
+                  <span class="symbol">|</span></div>
+                <div class="card-text fontsize-14"><img src="assets/img/bedroom.png"
+                    title="bed">&nbsp;{{item.numberOfBedrooms}} <span class="symbol">|</span></div>
+                <div class="card-text fontsize-14"><img src="assets/img/bathroom.png"
+                    title="bath">&nbsp;{{item.numberOfWCs}}</div>
+              </div>
+              <div class="info">
+                <div class="price font-weight-bold"><span>{{(item.price/1000000000).toFixed(1)}} tỷ</span></div>
+                <div><span><small class="text-muted">{{((item.price/item.area)/1000000).toFixed(1)}}
+                      triệu/m²</small></span></div>
+              </div>
+              <div class="text-right">
+                <div class="fontsize-12 price" [hidden]="item.status === true">Tin Chưa Duyệt</div>
+                <div class="fontsize-12 price" [hidden]="item.status === false">Tin Đã Duyệt</div>
+              </div>
+              <div class="d-flex justify-content-end">
+                <div class="m-2" (click)="OnClicks(item.id)" [hidden]="item.status === true"><i class="far fa-edit"></i>
+                </div>
+                <div class="m-2" (click)="OnClickDelete(item.id)"><i class="far fa-trash-alt"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

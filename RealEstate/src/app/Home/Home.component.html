@@ -5,117 +5,42 @@
         <ul class="nav nav-pills" id="pills-tab" role="tablist">
           <li class="nav-item itemfind" role="presentation">
             <a class="nav-link active itemlink" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
-              aria-controls="pills-home" aria-selected="true">Nhà đất bán</a>
+              aria-controls="pills-home" aria-selected="true" value="1">Nhà đất bán</a>
           </li>
           <li class="nav-item itemfind" role="presentation">
             <a class="nav-link itemlink" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
-              aria-controls="pills-profile" aria-selected="false">Nhà đất thuê</a>
+              aria-controls="pills-profile" aria-selected="false" value="2">Nhà đất thuê</a>
           </li>
         </ul>
-        <div class="tab-content py-3 px-2" id="pills-tabContent">
+        <div class="tab-content px-2" id="pills-tabContent">
           <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-            <div class="row">
-              <div class="col-lg5 col-sm-6">
-                <select class="select color-3">
-                  <option value="1">Loại nhà đất</option>
-                </select>
-              </div>
-              <div class="col-lg5 col-sm-6">
-                <select class="select color-3">
-                  <option value="1">Mức giá</option>
-                </select></div>
-              <div class="col-lg5 col-sm-6">
-                <select class="select color-3">
-                  <option value="1">Diện tích</option>
-                </select>
-              </div>
-              <div class="col-lg5 col-sm-6">
-                <select class="select color-3">
-                  <option value="1">Hướng</option>
-                </select>
-              </div>
-              <div class="col-lg5 col-sm-6">
-                <select class="select color-3">
-                  <option value="1">Số phòng</option>
-                </select>
-              </div>
-              <div class="col-lg5 col-sm-6">
-                <select class="select color-3">
-                  <option value="1">Tình trạng</option>
-                </select>
-              </div>
-              <div class="col-lg5 col-sm-6">
-                <select class="select color-3">
-                  <option value="1">Hồ Chí Minh</option>
-                </select>
-              </div>
-              <div class="col-lg5 col-sm-6">
-                <select class="select color-3">
-                  <option value="1">Quận/ Huyện</option>
-                </select>
-              </div>
-              <div class="col-lg5 col-sm-6">
-                <select class="select color-3">
-                  <option value="1">Phường/ Xã</option>
-                </select>
-              </div>
-              <div class="col-lg5 col-sm-6">
-                <button class="buttonfind background-organge colorads"><img src="assets/img/search.png"
-                    title="search">&nbsp;Tìm kiếm
-                </button>
+            <div class="form-row">
+              <div class="form-group col-lg-12 col-sm-12 mb-0">
+                <div class="input-group my-3">
+                  <input type="text" class="form-control color-3 border-b4 p-1"
+                    placeholder="Nhập địa chỉ hoặc từ khóa tìm kiếm (ví dụ: Vinhomes)" aria-label="Nhập email của bạn"
+                    aria-describedby="button-addon2">
+                  <div class="input-group-append w-20">
+                    <button class="btn background-organge colorads btnunhoverfind border-organge w-100" type="submit"
+                      id="button-addon2" (click)="OnClicks()"><img src="assets/img/search.png" title="search">&nbsp;Tìm
+                      kiếm</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
           <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
             <div class="row">
-              <div class="col-lg5 col-sm-6">
-                <select class="select color-3">
-                  <option value="1">Loại nhà đất</option>
-                </select>
-              </div>
-              <div class="col-lg5 col-sm-6">
-                <select class="select color-3">
-                  <option value="1">Mức giá</option>
-                </select></div>
-              <div class="col-lg5 col-sm-6">
-                <select class="select color-3">
-                  <option value="1">Diện tích</option>
-                </select>
-              </div>
-              <div class="col-lg5 col-sm-6">
-                <select class="select color-3">
-                  <option value="1">Hướng</option>
-                </select>
-              </div>
-              <div class="col-lg5 col-sm-6">
-                <select class="select color-3">
-                  <option value="1">Số phòng</option>
-                </select>
-              </div>
-              <div class="col-lg5 col-sm-6">
-                <select class="select color-3">
-                  <option value="1">Tình trạng</option>
-                </select>
-              </div>
-              <div class="col-lg5 col-sm-6">
-                <select class="select color-3">
-                  <option value="1">Hồ Chí Minh</option>
-                </select>
-              </div>
-              <div class="col-lg5 col-sm-6">
-                <select class="select color-3">
-                  <option value="1">Quận/ Huyện</option>
-                </select>
-              </div>
-              <div class="col-lg5 col-sm-6">
-                <select class="select color-3">
-                  <option value="1">Phường/ Xã</option>
-                </select>
-              </div>
-              <div class="col-lg5 col-sm-6">
-                <button class="buttonfind background-organge colorads"><img src="assets/img/search.png"
-                    title="search">&nbsp;Tìm kiếm
-                </button>
+              <div class="col-lg-12 col-sm-12">
+                <div class="input-group my-3">
+                  <input type="text" class="form-control color-3 border-b4 p-1" placeholder="Tìm kiếm"
+                    aria-label="Nhập email của bạn" aria-describedby="button-addon2">
+                  <div class="input-group-append w-20">
+                    <button class="btn background-organge colorads btnhover btn-outline-success border-organge w-100"
+                      type="button" id="button-addon2"><img src="assets/img/search.png" title="search">&nbsp;Tìm
+                      kiếm</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -128,443 +53,173 @@
   <div class="py-3 w-100">
     <div class="row reverse">
       <div class="col-lg-6">
-        <div class="fontsize-32 font-weight-bold">bất động sản Nổi bật</div>
+        <div class="fontsize-32 font-weight-bold">Bất động sản nổi bật</div>
         <div class="fontsize-14 color ">Tìm kiếm thông tin bất động sản mới nhất để bán, thuê và dữ liệu thị trường
         </div>
       </div>
       <div class="col-lg-6 buy align-self-center">
         <div class="d-flex flex-row justify-content-end">
-          <div class="fontsize-14 colortitle active boderright px-1">Nhà đất bán</div>
-          <div class="fontsize-14 colortitle px-1">Nhà đất cho thuê</div>
+          <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <a class="colortitle active boderright px-3" id="home-sell-tab" data-toggle="pill" href="#home-sell"
+                role="tab" aria-controls="home-sell" aria-selected="true">Nhà đất bán</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="colortitle pr-1 pl-3" id="home-rent-tab" data-toggle="pill" href="#home-rent" role="tab"
+                aria-controls="home-rent" aria-selected="false"> Nhà đất cho thuê</a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-lg-3 col-sm-6 cursorpointer" (click)="OnClick()">
-        <div class="card h-100">
-          <div class="img-list">
-            <div class="type position-absolute text-right align-self-end">
-              <span class="fontsize-12">Loại BĐS</span>
-            </div>
-            <div class="cardimage">
-              <div class="rounded-circle btn-left d-flex position-absolute align-content-center">
-                <button class="btn btncircle align-self-center">
-                  <i class="fas fa-angle-left justify-content-center d-flex align-items-center"></i>
-                </button>
+    <div class="tab-content backgroundcolor-none" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="home-sell" role="tabpanel" aria-labelledby="home-sell-tab">
+        <div class="row">
+          <div class="col-lg-3 col-sm-6 cursorpointer" *ngFor="let item of HotSellProperties"
+            (click)="OnClick(item.id)">
+            <div class="card h-100">
+              <div class="img-list">
+                <div class="type position-absolute text-right align-self-end">
+                  <span class="fontsize-12">{{item.typeOfPropertyName}}</span>
+                </div>
+                <div class="w-100 d-flex justify-content-center">
+                  <img class="image" src="{{item.linkName}}" title="Home" />
+                </div>
+                <div class="status fontsize-12 position-absolute">{{item.evaluationStatusName}}</div>
               </div>
-              <div class="rounded-circle btn-right d-flex position-absolute align-content-center">
-                <button class="btn btncircle align-self-center">
-                  <i class="fas fa-angle-right justify-content-center d-flex align-items-center"></i>
-                </button>
-              </div>
-            </div>
-            <img class="image" src="assets/img/anhP.png" title="Home" />
-            <div class="status fontsize-12 position-absolute">Tình trạng</div>
-          </div>
-          <div class="card-body">
-            <p class="card-title">Carillon 5 - Chính chủ căn 1PN - 1WC - 54m2 - 2.1 tỷ (giá 100%)...</p>
-            <p class="card-text"><img src="assets/img/mapmarker.png" title="mapmarker">&nbsp;<small
-                class="text-muted">Tân
-                Phú, Hồ Chí Minh</small></p>
-            <div class="d-flex">
-              <p class="card-text fontsize-14"><img src="assets/img/location.png" title="location">&nbsp;Tây Bắc <span
-                  class="symbol">|</span></p>
-              <p class="card-text fontsize-14"><img src="assets/img/area.png" title="area">&nbsp;74 m2 <span
-                  class="symbol">|</span></p>
-              <p class="card-text fontsize-14"><img src="assets/img/bedroom.png" title="bed">&nbsp;3 <span
-                  class="symbol">|</span></p>
-              <p class="card-text fontsize-14"><img src="assets/img/bathroom.png" title="bath">&nbsp;2</p>
-            </div>
-            <hr>
-            <div class="d-flex">
-              <div class="info">
-                <div class="price font-weight-bold"><span>5.6 tỷ</span></div>
-                <div><span><small class="text-muted">75,6 triệu/m²</small></span></div>
-              </div>
-              <div class="like align-self-center">
-                <img class="heart" src="assets/img/heart.png" title="heart">
+              <div class="card-body">
+                <p class="card-title">{{item.title}}</p>
+                <p class="card-text"><img src="assets/img/mapmarker.png" title="mapmarker">&nbsp;<small
+                    class="text-muted">{{item.districtName}}, {{item.provinceName}}</small></p>
+                <div class="d-flex">
+                  <p class="card-text fontsize-14"><img src="assets/img/location.png"
+                      title="location">&nbsp;{{item.directionName}} <span class="symbol">|</span></p>
+                  <p class="card-text fontsize-14"><img src="assets/img/area.png" title="area">&nbsp;{{item.area}} m2
+                    <span class="symbol">|</span></p>
+                  <p class="card-text fontsize-14"><img src="assets/img/bedroom.png"
+                      title="bed">&nbsp;{{item.numberOfBedrooms}} <span class="symbol">|</span></p>
+                  <p class="card-text fontsize-14"><img src="assets/img/bathroom.png"
+                      title="bath">&nbsp;{{item.numberOfWCs}}</p>
+                </div>
+                <hr class="mt-0">
+                <div class="d-flex">
+                  <div class="info">
+                    <div class="price font-weight-bold"><span>{{(item.price/1000000000).toFixed(1)}} tỷ</span></div>
+                    <div><span><small class="text-muted">{{((item.price/item.area)/1000000).toFixed(1)}}
+                          triệu/m²</small></span></div>
+                  </div>
+                  <div class="like align-self-center">
+                    <img class="heart" src="assets/img/heart.png" title="heart">
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
+        <div class="w-100 d-flex justify-content-center">
+          <button type="button" class="btn btn-outline-orange fontsize-14 m-3" (click)="Sell()">Xem thêm</button>
+        </div>
       </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="card h-100">
-          <div class="img-list">
-            <div class="type position-absolute text-right align-self-end">
-              <span class="fontsize-12">Căn hộ</span>
-            </div>
-            <div class="cardimage">
-              <div class="rounded-circle btn-left d-flex position-absolute align-content-center">
-                <button class="btn btncircle align-self-center">
-                  <i class="fas fa-angle-left justify-content-center d-flex align-items-center"></i>
-                </button>
+      <div class="tab-pane fade" id="home-rent" role="tabpanel" aria-labelledby="home-rent-tab">
+        <div class="row">
+          <div class="col-lg-3 col-sm-6 cursorpointer" *ngFor="let item of HotRentProperties"
+            (click)="OnClick(item.id)">
+            <div class="card h-100">
+              <div class="img-list">
+                <div class="type position-absolute text-right align-self-end">
+                  <span class="fontsize-12">{{item.typeOfPropertyName}}</span>
+                </div>
+                <div class="w-100 d-flex justify-content-center">
+                  <img class="image" src="{{item.linkName}}" title="Home" />
+                </div>
+                <div class="status fontsize-12 position-absolute">{{item.evaluationStatusName}}</div>
               </div>
-              <div class="rounded-circle btn-right d-flex position-absolute align-content-center">
-                <button class="btn btncircle align-self-center">
-                  <i class="fas fa-angle-right justify-content-center d-flex align-items-center"></i>
-                </button>
-              </div>
-            </div>
-            <img class="image" src="assets/img/anhP2.png" title="Home" />
-            <div class="status fontsize-12 position-absolute">Đã thẩm định</div>
-          </div>
-          <div class="card-body">
-            <p class="card-title">Nhà ĐẸP - NỞ HẬU hẻm xe hơi Quận 1 xây dựng kiên cố ...</p>
-            <p class="card-text"><img src="assets/img/mapmarker.png" title="mapmarker">&nbsp;<small
-                class="text-muted">Quận 1, Hồ Chí Minh</small></p>
-            <div class="d-flex">
-              <p class="card-text fontsize-14"><img src="assets/img/location.png" title="location">&nbsp;Đông Bắc<span
-                  class="symbol">|</span></p>
-              <p class="card-text fontsize-14"><img src="assets/img/area.png" title="area">&nbsp;74 m2 <span
-                  class="symbol">|</span></p>
-              <p class="card-text fontsize-14"><img src="assets/img/bedroom.png" title="bed">&nbsp;3 <span
-                  class="symbol">|</span></p>
-              <p class="card-text fontsize-14"><img src="assets/img/bathroom.png" title="bath">&nbsp;2</p>
-            </div>
-            <hr>
-            <div class="d-flex">
-              <div class="info">
-                <div class="price font-weight-bold"><span>5.6 tỷ</span></div>
-                <div><span><small class="text-muted">75,6 triệu/m²</small></span></div>
-              </div>
-              <div class="like align-self-center">
-                <img class="heart" src="assets/img/heart.png" title="heart">
+              <div class="card-body">
+                <p class="card-title">{{item.title}}</p>
+                <p class="card-text"><img src="assets/img/mapmarker.png" title="mapmarker">&nbsp;<small
+                    class="text-muted">{{item.districtName}}, {{item.provinceName}}</small></p>
+                <div class="d-flex">
+                  <p class="card-text fontsize-14"><img src="assets/img/location.png"
+                      title="location">&nbsp;{{item.directionName}} <span class="symbol">|</span></p>
+                  <p class="card-text fontsize-14"><img src="assets/img/area.png" title="area">&nbsp;{{item.area}} m2
+                    <span class="symbol">|</span></p>
+                  <p class="card-text fontsize-14"><img src="assets/img/bedroom.png"
+                      title="bed">&nbsp;{{item.numberOfBedrooms}} <span class="symbol">|</span></p>
+                  <p class="card-text fontsize-14"><img src="assets/img/bathroom.png"
+                      title="bath">&nbsp;{{item.numberOfWCs}}</p>
+                </div>
+                <hr class="mt-0">
+                <div class="d-flex">
+                  <div class="info">
+                    <div class="price font-weight-bold"><span>{{(item.price/1000000000).toFixed(1)}} tỷ</span></div>
+                    <div><span><small class="text-muted">{{((item.price/item.area)/1000000).toFixed(1)}}
+                          triệu/m²</small></span></div>
+                  </div>
+                  <div class="like align-self-center">
+                    <img class="heart" src="assets/img/heart.png" title="heart">
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="card h-100">
-          <div class="img-list">
-            <div class="type position-absolute text-right align-self-end">
-              <span class="fontsize-12">Đất nền</span>
-            </div>
-            <div class="cardimage">
-              <div class="rounded-circle btn-left d-flex position-absolute align-content-center">
-                <button class="btn btncircle align-self-center">
-                  <i class="fas fa-angle-left justify-content-center d-flex align-items-center"></i>
-                </button>
-              </div>
-              <div class="rounded-circle btn-right d-flex position-absolute align-content-center">
-                <button class="btn btncircle align-self-center">
-                  <i class="fas fa-angle-right justify-content-center d-flex align-items-center"></i>
-                </button>
-              </div>
-            </div>
-            <img class="image" src="assets/img/anhP3.png" title="Home" />
-            <div class="status fontsize-12 position-absolute">Đã thẩm định</div>
-          </div>
-          <div class="card-body">
-            <p class="card-title">Bán đất nền chính chủ, hẻm xe hơi Quận 12 - Ngay công viên...</p>
-            <p class="card-text"><img src="assets/img/mapmarker.png" title="mapmarker">&nbsp;<small
-                class="text-muted">Quận 12, Hồ Chí Minh</small></p>
-            <div class="d-flex">
-              <p class="card-text fontsize-14"><img src="assets/img/location.png" title="location">&nbsp;Tây Bắc <span
-                  class="symbol">|</span></p>
-              <p class="card-text fontsize-14"><img src="assets/img/area.png" title="area">&nbsp;109.9 m2</p>
-            </div>
-            <hr>
-            <div class="d-flex">
-              <div class="info">
-                <div class="price font-weight-bold"><span>2.9 tỷ</span></div>
-                <div><span><small class="text-muted">26,4 triệu/m²</small></span></div>
-              </div>
-              <div class="like align-self-center">
-                <img class="heart" src="assets/img/heart.png" title="heart">
-              </div>
-            </div>
-          </div>
+        <div class="w-100 d-flex justify-content-center">
+          <button type="button" class="btn btn-outline-orange fontsize-14 m-3" (click)="Rent()">Xem thêm</button>
         </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="card h-100">
-          <div class="img-list">
-            <div class="type position-absolute text-right align-self-end">
-              <span class="fontsize-12">Đất dự án</span>
-            </div>
-            <div class="cardimage">
-              <div class="rounded-circle btn-left d-flex position-absolute align-content-center">
-                <button class="rounded-circle btn btncircle align-self-center">
-                  <i class="fas fa-angle-left justify-content-center d-flex align-items-center"></i>
-                </button>
-              </div>
-              <div class="rounded-circle btn-right d-flex position-absolute align-content-center">
-                <button class="btn btncircle align-self-center">
-                  <i class="fas fa-angle-right justify-content-center d-flex align-items-center"></i>
-                </button>
-              </div>
-            </div>
-            <img class="image" src="assets/img/anhP4.png" title="Home" />
-            <div class="status fontsize-12 position-absolute">Chưa thẩm định</div>
-          </div>
-          <div class="card-body">
-            <p class="card-title">Bán đất nền dự án, hẻm xe hơi Quận 7.</p>
-            <p class="card-text"><img src="assets/img/mapmarker.png" title="mapmarker">&nbsp;<small
-                class="text-muted">Quận 7, Hồ Chí Minh</small></p>
-            <div class="d-flex">
-              <p class="card-text fontsize-14"><img src="assets/img/location.png" title="location">&nbsp;Tây <span
-                  class="symbol">|</span></p>
-              <p class="card-text fontsize-14"><img src="assets/img/area.png" title="area">&nbsp;95,3 m2</p>
-            </div>
-            <hr>
-            <div class="d-flex">
-              <div class="info">
-                <div class="price font-weight-bold"><span>10.5 tỷ</span></div>
-                <div><span><small class="text-muted">110,2 triệu/m²</small></span></div>
-              </div>
-              <div class="like align-self-center">
-                <img class="heart" src="assets/img/heart.png" title="heart">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="card h-100">
-          <div class="img-list">
-            <div class="type position-absolute text-right align-self-end">
-              <span class="fontsize-12">Loại BĐS</span>
-            </div>
-            <div class="cardimage">
-              <div class="rounded-circle btn-left d-flex position-absolute align-content-center">
-                <button class="btn btncircle align-self-center">
-                  <i class="fas fa-angle-left justify-content-center d-flex align-items-center"></i>
-                </button>
-              </div>
-              <div class="rounded-circle btn-right d-flex position-absolute align-content-center">
-                <button class="btn btncircle align-self-center">
-                  <i class="fas fa-angle-right justify-content-center d-flex align-items-center"></i>
-                </button>
-              </div>
-            </div>
-            <img class="image" src="assets/img/anhP.png" title="Home" />
-            <div class="status fontsize-12 position-absolute">Tình trạng</div>
-          </div>
-          <div class="card-body">
-            <p class="card-title">Carillon 5 - Chính chủ căn 1PN - 1WC - 54m2 - 2.1 tỷ (giá 100%)...</p>
-            <p class="card-text"><img src="assets/img/mapmarker.png" title="mapmarker">&nbsp;<small
-                class="text-muted">Tân
-                Phú, Hồ Chí Minh</small></p>
-            <div class="d-flex">
-              <p class="card-text fontsize-14"><img src="assets/img/location.png" title="location">&nbsp;Tây Bắc <span
-                  class="symbol">|</span></p>
-              <p class="card-text fontsize-14"><img src="assets/img/area.png" title="area">&nbsp;74 m2 <span
-                  class="symbol">|</span></p>
-              <p class="card-text fontsize-14"><img src="assets/img/bedroom.png" title="bed">&nbsp;3 <span
-                  class="symbol">|</span></p>
-              <p class="card-text fontsize-14"><img src="assets/img/bathroom.png" title="bath">&nbsp;2</p>
-            </div>
-            <hr>
-            <div class="d-flex">
-              <div class="info">
-                <div class="price font-weight-bold"><span>5.6 tỷ</span></div>
-                <div><span><small class="text-muted">75,6 triệu/m²</small></span></div>
-              </div>
-              <div class="like align-self-center">
-                <img class="heart" src="assets/img/heart.png" title="heart">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="card h-100">
-          <div class="img-list">
-            <div class="type position-absolute text-right align-self-end">
-              <span class="fontsize-12">Căn hộ</span>
-            </div>
-            <div class="cardimage">
-              <div class="rounded-circle btn-left d-flex position-absolute align-content-center">
-                <button class="btn btncircle align-self-center">
-                  <i class="fas fa-angle-left justify-content-center d-flex align-items-center"></i>
-                </button>
-              </div>
-              <div class="rounded-circle btn-right d-flex position-absolute align-content-center">
-                <button class="btn btncircle align-self-center">
-                  <i class="fas fa-angle-right justify-content-center d-flex align-items-center"></i>
-                </button>
-              </div>
-            </div>
-            <img class="image" src="assets/img/anhP2.png" title="Home" />
-            <div class="status fontsize-12 position-absolute">Đã thẩm định</div>
-          </div>
-          <div class="card-body">
-            <p class="card-title">Nhà ĐẸP - NỞ HẬU hẻm xe hơi Quận 1 xây dựng kiên cố ...</p>
-            <p class="card-text"><img src="assets/img/mapmarker.png" title="mapmarker">&nbsp;<small
-                class="text-muted">Quận 1, Hồ Chí Minh</small></p>
-            <div class="d-flex">
-              <p class="card-text fontsize-14"><img src="assets/img/location.png" title="location">&nbsp;Đông Bắc <span
-                  class="symbol">|</span></p>
-              <p class="card-text fontsize-14"><img src="assets/img/area.png" title="area">&nbsp;74 m2 <span
-                  class="symbol">|</span></p>
-              <p class="card-text fontsize-14"><img src="assets/img/bedroom.png" title="bed">&nbsp;3 <span
-                  class="symbol">|</span></p>
-              <p class="card-text fontsize-14"><img src="assets/img/bathroom.png" title="bath">&nbsp;2</p>
-            </div>
-            <hr>
-            <div class="d-flex">
-              <div class="info">
-                <div class="price font-weight-bold"><span>5.6 tỷ</span></div>
-                <div><span><small class="text-muted">75,6 triệu/m²</small></span></div>
-              </div>
-              <div class="like align-self-center">
-                <img class="heart" src="assets/img/heart.png" title="heart">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="card h-100">
-          <div class="img-list">
-            <div class="type position-absolute text-right align-self-end">
-              <span class="fontsize-12">Đất nền</span>
-            </div>
-            <div class="cardimage">
-              <div class="rounded-circle btn-left d-flex position-absolute align-content-center">
-                <button class="btn btncircle align-self-center">
-                  <i class="fas fa-angle-left justify-content-center d-flex align-items-center"></i>
-                </button>
-              </div>
-              <div class="rounded-circle btn-right d-flex position-absolute align-content-center">
-                <button class="btn btncircle align-self-center">
-                  <i class="fas fa-angle-right justify-content-center d-flex align-items-center"></i>
-                </button>
-              </div>
-            </div>
-            <img class="image" src="assets/img/anhP3.png" title="Home" />
-            <div class="status fontsize-12 position-absolute">Đã thẩm định</div>
-          </div>
-          <div class="card-body">
-            <p class="card-title">Bán đất nền chính chủ, hẻm xe hơi Quận 12 - Ngay công viên...</p>
-            <p class="card-text"><img src="assets/img/mapmarker.png" title="mapmarker">&nbsp;<small
-                class="text-muted">Quận 12, Hồ Chí Minh</small></p>
-            <div class="d-flex">
-              <p class="card-text fontsize-14"><img src="assets/img/location.png" title="location">&nbsp;Tây Bắc <span
-                  class="symbol">|</span></p>
-              <p class="card-text fontsize-14"><img src="assets/img/area.png" title="area">&nbsp;109.9 m2</p>
-            </div>
-            <hr>
-            <div class="d-flex">
-              <div class="info">
-                <div class="price font-weight-bold"><span>2.9 tỷ</span></div>
-                <div><span><small class="text-muted">26,4 triệu/m²</small></span></div>
-              </div>
-              <div class="like align-self-center">
-                <img class="heart" src="assets/img/heart.png" title="heart">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="card h-100">
-          <div class="img-list">
-            <div class="type position-absolute text-right align-self-end">
-              <span class="fontsize-12">Đất dự án</span>
-            </div>
-            <div class="cardimage">
-              <div class="rounded-circle btn-left d-flex position-absolute align-content-center">
-                <button class="btn btncircle align-self-center">
-                  <i class="fas fa-angle-left justify-content-center d-flex align-items-center"></i>
-                </button>
-              </div>
-              <div class="rounded-circle btn-right d-flex position-absolute align-content-center">
-                <button class="btn btncircle align-self-center">
-                  <i class="fas fa-angle-right justify-content-center d-flex align-items-center"></i>
-                </button>
-              </div>
-            </div>
-            <img class="image" src="assets/img/anhP4.png" title="Home" />
-            <div class="status fontsize-12 position-absolute">Chưa thẩm định</div>
-          </div>
-          <div class="card-body">
-            <p class="card-title">Bán đất nền dự án, hẻm xe hơi Quận 7.</p>
-            <p class="card-text"><img src="assets/img/mapmarker.png" title="mapmarker">&nbsp;<small
-                class="text-muted">Quận 7, Hồ Chí Minh</small></p>
-            <div class="d-flex">
-              <p class="card-text fontsize-14"><img src="assets/img/location.png" title="location">&nbsp;Tây <span
-                  class="symbol">|</span></p>
-              <p class="card-text fontsize-14"><img src="assets/img/area.png" title="area">&nbsp;95,3 m2</p>
-            </div>
-            <hr>
-            <div class="d-flex">
-              <div class="info">
-                <div class="price font-weight-bold"><span>10.5 tỷ</span></div>
-                <div><span><small class="text-muted">110,2 triệu/m²</small></span></div>
-              </div>
-              <div class="like align-self-center">
-                <img class="heart" src="assets/img/heart.png" title="heart">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="w-100 d-flex justify-content-center">
-        <button type="button" class="btn btn-outline-orange fontsize-14">Xem thêm</button>
       </div>
     </div>
   </div>
   <div class="py-3 w-100">
     <div class="row">
       <div class="col-lg-6">
-        <div class="color-5">Danh sách địa điểm</div>
-        <div class="fontsize-24 font-weight-bold color-5">Bất động sản nổi bật
+        <div class="fontsize-32 font-weight-bold color-5">Địa điểm nổi bật
         </div>
       </div>
-      <div class="col-lg-6 align-self-center">
+      <div class="col-lg-6 ">
         <div class="d-flex flex-row justify-content-end">
-          <div class="fontsize-14 color-5">Xem thêm ></div>
+          <div class="fontsize-14 color-5">Xem thêm >></div>
         </div>
       </div>
     </div>
-    <div class="position-relative">
-      <div class="row flex-nowrap mediacenter">
-        <div class="col-lg-2 col-sm-4 col-6">
-          <img class="w-100" src="assets/img/QuanTanPhu.png" title="TanPhu">
-          <div class="colortext fontsize-14">Tân Phú, Hồ Chí Minh</div>
-        </div>
-        <div class="col-lg-2 col-sm-4 col-6">
-          <img class="w-100" src="assets/img/NhonTracDN.png" title="NhonTrach">
-          <div class="colortext fontsize-14">Nhơn Trạch, Đồng Nai</div>
-        </div>
-        <div class="col-lg-2 col-sm-4 col-6">
-          <img class="w-100" src="assets/img/NHSDaNang.png" title="NHS">
-          <div class="colortext fontsize-14">Ngũ Hành Sơn, Đà Nẵng</div>
-        </div>
-        <div class="col-lg-2 col-sm-4 col-6">
-          <img class="w-100" src="assets/img/BauBangBinhDuong.png" title="BauBang">
-          <div class="colortext fontsize-14">Bàu Bàng, Bình Dương</div>
-        </div>
-        <div class="col-lg-2 col-sm-4 col-6">
-          <img class="w-100" src="assets/img/TanBinh.png" title="TanBinh">
-          <div class="colortext fontsize-14">Tân Bình, Hồ Chí Minh</div>
-        </div>
-        <div class="col-lg-2 col-sm-4 col-6">
-          <img class="w-100" src="assets/img/HoangMaiHaNoi.png" title="HoangMai">
-          <div class="colortext fontsize-14">Hoàng Mai, Hà Nội</div>
-        </div>
-        <div class="col-lg-2 col-sm-4 col-6">
-          <img class="w-100" src="assets/img/HoangMaiHaNoi.png" title="HoangMai">
-          <div class="colortext fontsize-14">Hoàng Mai, Hà Nội</div>
-        </div>
-        <div class="col-lg-2 col-sm-4 col-6">
-          <img class="w-100" src="assets/img/HoangMaiHaNoi.png" title="HoangMai">
-          <div class="colortext fontsize-14">Hoàng Mai, Hà Nội</div>
-        </div>
-      </div>
-      <div class="position-absolute pre-next ">
-        <div class="rounded-circle btn-left btn-left-new d-flex position-absolute align-content-center">
-          <button class="btn btncirclenew align-self-center">
-            <i class="fas fa-angle-left justify-content-center d-flex align-items-center"></i>
-          </button>
-        </div>
-        <div class="rounded-circle btn-left btn-right-new d-flex position-absolute align-content-center">
-          <button class="btn btncirclenew align-self-center">
-            <i class="fas fa-angle-right justify-content-center d-flex align-items-center"></i>
-          </button>
+    <div class="py-3 row mx-auto my-auto">
+      <div id="myCarousel" class="carousel slide w-100" data-ride="carousel">
+        <div class="carousel-inner w-100" role="listbox">
+          <div class="carousel-item active">
+            <div class="col-lg-2 col-sm-4 col-6">
+              <img class="w-100" src="assets/img/QuanTanPhu.png" title="TanPhu">
+              <div class="colortext fontsize-14">Tân Phú, Hồ Chí Minh</div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="col-lg-2 col-sm-4 col-6">
+              <img class="w-100" src="assets/img/NhonTracDN.png" title="NhonTrach">
+              <div class="colortext fontsize-14">Nhơn Trạch, Đồng Nai</div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="col-lg-2 col-sm-4 col-6">
+              <img class="w-100" src="assets/img/NHSDaNang.png" title="NHS">
+              <div class="colortext fontsize-14">Ngũ Hành Sơn, Đà Nẵng</div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="col-lg-2 col-sm-4 col-6">
+              <img class="w-100" src="assets/img/BauBangBinhDuong.png" title="BauBang">
+              <div class="colortext fontsize-14">Bàu Bàng, Bình Dương</div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="col-lg-2 col-sm-4 col-6">
+              <img class="w-100" src="assets/img/TanBinh.png" title="TanBinh">
+              <div class="colortext fontsize-14">Tân Bình, Hồ Chí Minh</div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="col-lg-2 col-sm-4 col-6">
+              <img class="w-100" src="assets/img/HoangMaiHaNoi.png" title="HoangMai">
+              <div class="colortext fontsize-14">Hoàng Mai, Hà Nội</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -578,123 +233,132 @@
       &nbsp;
       <div class="fontsize-32 price">hot</div>
     </div>
-    <div class="py-3 row hot flex-nowrap mediacenter">
-      <div class="col-lg-2 col-sm-4 col-6">
-        <div class="keytext colortext fontsize-14 justify-content-center d-flex align-items-center">
-          bán nhà quận 7
-        </div>
-      </div>
-      <div class="col-lg-2 col-sm-4 col-6">
-        <div class="keytext colortext fontsize-14 justify-content-center d-flex align-items-center">
-          bán nhà quận 9
-        </div>
-      </div>
-      <div class="col-lg-2 col-sm-4 col-6">
-        <div class="keytext colortext fontsize-14 justify-content-center d-flex align-items-center">
-          chung cư quận 9
-        </div>
-      </div>
-      <div class="col-lg-2 col-sm-4 col-6">
-        <div class="keytext colortext fontsize-14 justify-content-center d-flex align-items-center">
-          chung cư quận 4
-        </div>
-      </div>
-      <div class="col-lg-2 col-sm-4 col-6">
-        <div class="keytext colortext fontsize-14 justify-content-center d-flex align-items-center">
-          thuê nhà quận 10
-        </div>
-      </div>
-      <div class="col-lg-2 col-sm-4 col-6">
-        <div class="keytext colortext fontsize-14 justify-content-center d-flex align-items-center">
-          thuê nhà quận 7
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="container background-white">
-  <div class="news font-weight-bold fontsize-32 py-3 paddingcontent">Tin bất động sản nổi bật</div>
-  <div class="row">
-    <div class="col-xl-9">
-      <div class="row">
-        <div class="col-md-6 newsimage">
-          <img class="w-100" src="assets/img/news.png">
-          <div class="font-weight-bold fontsize-24">Dòng vốn đầu tư sẽ tìm đường vào bất động sản sau đại dịch Covid-19
-          </div>
-          <div class="fontsize-14 color"><img src="assets/img/time.png" title="time">&nbsp;19:00, 13/05/2020</div>
-        </div>
-        <div class="col-md-6">
-          <div class="newstitle">
-            Dòng vốn đầu tư sẽ tìm đường vào bất động sản sau đại dịch Covid-19
-          </div>
-          <hr>
-          <div class="newstitle">
-            Điểm nóng đất nền mới phía Bắc hấp lực dòng vốn đầu tư
-          </div>
-          <hr>
-          <div class="newstitle">
-            Sau đại dịch Covid-19, thị trường bất động sản đang phục hồi
-          </div>
-          <hr>
-          <div class="newstitle">
-            30 tuổi, tôi mua căn nhà đầu tiên và nhận ngay cái kết đắng
-          </div>
-          <hr>
-          <div class="newstitle">
-            7 điều nên làm khi mua căn hộ chung cư để không hối tiếc
-          </div>
-          <hr>
-          <div class="newstitle">
-            4 "đòn bẩy" để nhà đầu tư mở hầu bao với D-Homme
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-3 w-100 alignwebkitcenter">
-      <div class="py-1">
-        <div class="ads1"><img class="w-100 h-100" src="assets/img/ads1.png"></div>
-      </div>
-      <div class="py-1">
-        <div class="ads1"><img class="w-100 h-100" src="assets/img/ads1.png"></div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="h-100">
-  <div class="row w-100 position-absolute">
-    <div class="col-lg-6 ef dangbds">
-      <div class="item height">
-      </div>
-    </div>
-    <div class="col-lg-6 ef lienhe">
-      <div class="item height">
-      </div>
-    </div>
-  </div>
-  <div class="container  findboder">
-    <div class="row text-center">
-      <div class="col-lg-6 height">
-        <div class="img">
-          <img class="pngimg" src="assets/img/Dang.png">
-        </div>
-        <h3 class="font-weight-bold fontsize-24 title">GỬI BÁN BĐS VÀ CHO THUÊ MIỄN PHÍ</h3>
-        <p>Dễ dàng tiếp cận người mua và người thuê </p>
-        <button class="btn background-white btn-outline-success">Gửi BĐS ngay</button>
-      </div>
-      <div class="col-lg-6 height">
-        <div class="img">
-          <img class="pngimg" src="assets/img/Lh.png">
-        </div>
-        <h3 class="font-weight-bold fontsize-24 title">ĐĂNG KÝ NHẬN THÔNG TIN MỚI NHẤT</h3>
-        <p>Cập nhật thông tin BĐS nhanh nhất cho bạn</p>
-        <div class=" d-flex justify-content-center">
-          <div class="input-group inputcontact mb-3">
-            <input type="email" class="form-control formcontract" placeholder="Nhập email của bạn"
-              aria-label="Nhập email của bạn" aria-describedby="button-addon2">
-            <div class="input-group-append">
-              <button class="btn background-white btnhover btn-outline-success border-white" type="button"
-                id="button-addon2"><img src="assets/img/send.png" title="send"></button>
+    <div class="py-3 hot row mx-auto my-auto">
+      <div id="myCarousel" class="carousel slide w-100" data-ride="carousel">
+        <div class="carousel-inner w-100" role="listbox">
+          <div class="carousel-item active">
+            <div class="col-lg-2 col-sm-4 col-6">
+              <div class="keytext colortext fontsize-14 justify-content-center d-flex align-items-center">
+                bán nhà quận 7
+              </div>
             </div>
+          </div>
+          <div class="carousel-item">
+            <div class="col-lg-2 col-sm-4 col-6">
+              <div class="keytext colortext fontsize-14 justify-content-center d-flex align-items-center">
+                bán nhà quận 9
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="col-lg-2 col-sm-4 col-6">
+              <div class="keytext colortext fontsize-14 justify-content-center d-flex align-items-center">
+                chung cư quận 9
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="col-lg-2 col-sm-4 col-6">
+              <div class="keytext colortext fontsize-14 justify-content-center d-flex align-items-center">
+                chung cư quận 4
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="col-lg-2 col-sm-4 col-6">
+              <div class="keytext colortext fontsize-14 justify-content-center d-flex align-items-center">
+                thuê nhà quận 10
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="col-lg-2 col-sm-4 col-6">
+              <div class="keytext colortext fontsize-14 justify-content-center d-flex align-items-center">
+                thuê nhà quận 10
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class=" background-white">
+  <div class="container background-white">
+    <div class="news font-weight-bold fontsize-32 py-3 paddingcontent">Tin bất động sản nổi bật</div>
+    <div class="row">
+      <div class="col-xl9 col-xl-9">
+        <div class="row">
+          <div class="col-md-6 newsimage pr-3">
+            <img class="w-100" src="assets/img/news.png">
+            <div class="font-weight-bold fontsize-24">Dòng vốn đầu tư sẽ tìm đường vào bất động sản sau đại dịch
+              Covid-19
+            </div>
+            <div class="fontsize-14 color"><img src="assets/img/time.png" title="time">&nbsp;19:00, 13/05/2020</div>
+          </div>
+          <div class="col-md-6 px-0">
+            <div class="newstitle">
+              Dòng vốn đầu tư sẽ tìm đường vào bất động sản sau đại dịch Covid-19
+            </div>
+            <hr>
+            <div class="newstitle">
+              Điểm nóng đất nền mới phía Bắc hấp lực dòng vốn đầu tư
+            </div>
+            <hr>
+            <div class="newstitle">
+              Sau đại dịch Covid-19, thị trường bất động sản đang phục hồi
+            </div>
+            <hr>
+            <div class="newstitle">
+              30 tuổi, tôi mua căn nhà đầu tiên và nhận ngay cái kết đắng
+            </div>
+            <hr>
+            <div class="newstitle">
+              7 điều nên làm khi mua căn hộ chung cư để không hối tiếc
+            </div>
+            <hr>
+            <div class="newstitle">
+              4 "đòn bẩy" để nhà đầu tư mở hầu bao với D-Homme
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl3 col-xl-3 w-100 alignwebkitcenter">
+        <div class="py-1">
+          <div class=""><img class="w-100 h-100" src="assets/img/ads1.png"></div>
+        </div>
+        <div class="py-1">
+          <div class=""><img class="w-100 h-100" src="assets/img/ads2.png"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row bannerfooter">
+  <div class="col-lg-6 ef">
+    <div class="item">
+      <div class="img">
+        <img class="pngimg" src="assets/img/Dang.png">
+      </div>
+      <h3 class="font-weight-bold fontsize-24 title colorads">GỬI BÁN BĐS VÀ CHO THUÊ MIỄN PHÍ</h3>
+      <p class="colorads">Dễ dàng tiếp cận người mua và người thuê </p>
+      <button class="btn background-white btn-outline-success">Gửi BĐS ngay</button>
+    </div>
+  </div>
+  <div class="col-lg-6 ef">
+    <div class="item">
+      <div class="img">
+        <img class="pngimg" src="assets/img/Lh.png">
+      </div>
+      <h3 class="font-weight-bold fontsize-24 title colorads">ĐĂNG KÝ NHẬN THÔNG TIN MỚI NHẤT</h3>
+      <p class="colorads">Cập nhật thông tin BĐS nhanh nhất cho bạn</p>
+      <div class=" d-flex justify-content-center">
+        <div class="input-group inputcontact mb-3">
+          <input type="text" class="form-control formcontract" placeholder="Nhập email của bạn"
+            aria-label="Nhập email của bạn" aria-describedby="button-addon2">
+          <div class="input-group-append">
+            <button class="btn background-white btnhover btn-outline-success border-white" type="button"
+              id="button-addon2"><img src="assets/img/send.png" title="send"></button>
           </div>
         </div>
       </div>

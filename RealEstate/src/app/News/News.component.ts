@@ -12,7 +12,6 @@ export class NewsComponent implements OnInit {
 
   ngOnInit() {
   }
-  
   Click(){
     this.router.navigateByUrl('/ChiTietTinTuc');
   }

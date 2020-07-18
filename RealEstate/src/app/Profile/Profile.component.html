@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="padding">
+    <h1 class="fontsize-32 font-weight-bold color-5">Quản lý hồ sơ</h1>
+    <div class="background-white p-3">
+      <div class="pb-3">
+        <h3 class="font-weight-bold fontsize-24 color-3">Thông tin cá nhân</h3>
+      </div>
+      <div class="row typeitem d-flex py-1" *ngIf="userDetails">
+        <div class="col-md-6 pl0">
+          <div class="form-group row">
+            <div class="col-md-12 pl0 d-flex align-items-center pl0">Họ và tên</div>
+            <div class="col-md-12 pl0">
+              <input type="text" class="form-control select color-3 border-b4 p-1" value="{{userDetails.fullName}}"
+                disabled>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 pl0">
+          <div class="form-group row">
+            <div class="col-md-12 pl0 d-flex align-items-center pl0">Email</div>
+            <div class="col-md-12 pl0">
+              <input type="email" class="form-control select color-3 border-b4 p-1" value="{{userDetails.email}}"
+                disabled>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 pl0">
+          <div class="form-group row">
+            <div class="col-md-12 pl0 d-flex align-items-center pl0">CMND/ CCCD</div>
+            <div class="col-md-12 pl0">
+              <input type="email" class="form-control select color-3 border-b4 p-1"
+                value="{{userDetails.identityNumber}}" disabled>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
