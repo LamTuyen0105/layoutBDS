@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-/* -----------------Cài đặt chung------------------ */
 *{
     margin: 0;
     padding: 0;   
@@ -9,7 +8,6 @@
     font-size: 16px;
 }
 
-/* ------------------Masterpage------------------------ */
 .header{
     width: 100%;    
 }
@@ -96,7 +94,6 @@
     width: 16%;
 }
 
-/* -----Login----- */
 .modal-header{
     border-bottom: unset;
 }
@@ -133,7 +130,6 @@
     margin: 2px;
 }
 
-/* -------------------Home-------------------- */
 .col-lg-3, .col-sm-6, .col-lg-6, .col-lg-2, .col-sm-4, .col-6, .col-xl-9, .col-xl-3,
 .col-md-6, .col-lg-4, .col-lg-10, .col-lg-8, .col-md-9, .col-md-3, .col-md-6, .col-12,
 .col-md-10, .col-md-4, .col-md-8, .col-md-7, .col-md-5, .col-md-2, .col-md2, .col-lg-12,
@@ -141,13 +137,9 @@
     padding: 5px;   
 }
 
-/* .container{
-    background-color: rgba(245,245,245,1);
-} */
-
 .find{
     background-image: url(assets/img/banner.png);
-    background-size: cover;/*dùng để full màn hình kể cả khi kích thước màn hình thay đổi*/
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
@@ -481,18 +473,6 @@
     background-position: center;
 }
 
-/* .dangbds{
-    background-image: url(assets/img/DangBDS.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.lienhe{
-    background-image: url(assets/img/LienHe.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-} */
-
 .ef{
     opacity: 1;
     transform: translate(0,0) scale3d(1,1,1);
@@ -505,8 +485,7 @@
     color: #fff;
     height: 100%;
     position: relative;
-    background-image: linear-gradient(to bottom,#278335 0,rgba(78, 163, 91, 0.6) 100%);/*pha màu trong suốt trên màu xanh lá phía dưới màu xám có độ loang*/
-    /* background-color: rgba(39, 131, 53, 0.6) */
+    background-image: linear-gradient(to bottom,#278335 0,rgba(78, 163, 91, 0.6) 100%);
 }
 
 .img{
@@ -549,7 +528,7 @@
 .mediacenter{
     overflow: scroll;
 }
-.mediacenter::-webkit-scrollbar{/* thuộc tính dùng xóa thanh cuộn */
+.mediacenter::-webkit-scrollbar{
     display: none;
 }
 
@@ -557,7 +536,6 @@
     width: 20%;
 }
 
-/* ---------------------Search---------------------- */
 .fa-th-large{
     color: #D4D4D4;
     font-size: 20px;
@@ -607,7 +585,6 @@
     width: 25px;
 }
 
-/* ------------------Post------------------------ */
 .ads2{
     width: 9%;
     height: 100%;
@@ -628,27 +605,20 @@
     color: red;
   }
 
-/* Thay đổi màu radio */
 .radio-item {
     display: block;
     position: relative;
     padding-left: 25px;
     color: #333333;
-    cursor: pointer;/*thay đổi hình dạng con trỏ chuột*/
-    /* -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none; */
+    cursor: pointer;
 }
 
-/* Hide the browser's default radio button */
 .radio-item input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
 }
 
-/* Create a custom radio button */
 .checkmark {
     position: absolute;
     top: 0;
@@ -660,29 +630,20 @@
     border-radius: 50%;
 }
 
-/* On mouse-over, add a grey background color */
-/* .radio-item:hover input ~ .checkmark {
-    background-color: #ccc;
-} */
-
-/* When the radio button is checked, add a blue background */
 .radio-item input:checked ~ .checkmark {
     border-color: #F67D0F;
 }
 
-/* Create the indicator (the dot/circle - hidden when not checked) */
 .checkmark:after {
     content: "";
     position: absolute;
     display: none;
 }
   
-/* Show the indicator (dot/circle) when checked */
 .radio-item input:checked ~ .checkmark:after {
     display: block;
 }
   
-/* Style the indicator (dot/circle) */
 .radio-item .checkmark:after {
     top: 2px;
     left: 2px;
@@ -691,7 +652,6 @@
     border-radius: 50%;
     background: #F67D0F;
 }
-/*--Hết phần định dạng radio-- */
 
 .pl0{
     padding-left: 0px;
@@ -704,7 +664,7 @@
 .border-b4{
     border: 1px solid #b4b4b4;
 }
-/* --Map-- */
+
 agm-map{
     height: 354px;
 }
@@ -721,10 +681,8 @@ agm-map{
     width: 80%;
 }
 
-/* --LoadImage-- */
 .ajax-file-upload-container, .ajax-file-upload-container-drawing {
     display: inline-block;
-    /* float: left; */
     margin-top: 18px;
 }
 
@@ -774,7 +732,6 @@ input[type=file] {
     display: block;
 }
 
-/* --Định dạng checkbox-- */
 .checkbox-item {
     display: block;
     position: relative;
@@ -783,7 +740,6 @@ input[type=file] {
     cursor: pointer;
 }
 
-/* Hide the browser's default checkbox */
 .checkbox-item input {
     position: absolute;
     opacity: 0;
@@ -792,7 +748,6 @@ input[type=file] {
     width: 0;
 }
 
-/* Create a custom checkbox */
 .checkmark1 {
     position: absolute;
     top: 0;
@@ -804,24 +759,16 @@ input[type=file] {
     border-radius: 3px;
 }
 
-/* When the checkbox is checked, add a blue background */
-/* .checkbox-item input:checked ~ .checkmark1 {
-    background-color: #2196F3;
-} */
-
-/* Create the checkmark1/indicator (hidden when not checked) */
 .checkmark1:after {
     content: "";
     position: absolute;
     display: none;  
 }
 
-/* Show the checkmark1 when checked */
 .checkbox-item input:checked ~ .checkmark1:after {
     display: block;
 }
 
-/* Style the checkmark1/indicator */
 .checkbox-item .checkmark1:after {
     left: 5px;
     top: 1px;
@@ -848,7 +795,6 @@ input[type=file] {
     height: 40px;
 }
 
-/* --------------------------Register-------------------------- */
 .h39{
     height: 39px;
 }
@@ -857,7 +803,6 @@ input[type=file] {
     border: 1px solid #707070;
 }
 
-/* ------------------------------Detail---------------------------- */
 .t-50{
     top:50%;
 }
@@ -878,7 +823,6 @@ input[type=file] {
     color: rgb(246, 125, 15);
 }
 
-/* --------------------------------News-------------------------------- */
 .pagination {
     display: inline-block;
 }
@@ -902,7 +846,6 @@ input[type=file] {
 
 .pagination a:hover:not(.active) {background-color: #ddd;}
 
-/* ---------------------------NewsDetails---------------------------- */
 .btnshare{
     color: #fff;
     border-radius: 2px ;
@@ -938,7 +881,6 @@ input[type=file] {
     color: #278335;
 }
 
-/* -----------------------------MyPost--------------------------- */
 .fa-edit{
     color: #D4D4D4;
     font-size: 20px;
@@ -959,16 +901,13 @@ input[type=file] {
     color: #F67D0F;
 }
 
-/* ------------------------Reponsive(luôn nằm cuối css)--------------------- */
 @media screen and (max-width:576px){
-    /* -------------------header------------ */
     .contact{
         display: block!important;
     }
 }
 
-@media screen and (max-width:992px){/* nhừng màn hình nhỏ hơn hoặc bằng 992 sẽ áp dụng các thuộc tính được khai báo bên trong*/
-    /* -------------------header------------ */
+@media screen and (max-width:992px){
     .e-contact{
         display: flex;
     }
@@ -981,7 +920,6 @@ input[type=file] {
     .addnew{
         justify-content: unset!important;
     }
-    /* ---------------content-------------- */
     .buy {
         display: flex;
         margin-top: 10px;
@@ -996,16 +934,13 @@ input[type=file] {
     .height{
         height: 280px;
     }
-    /* ------------footer------------ */
     .hide{
         display: none!important;
     }    
-    /* -------------login-------------- */
     .sociallogin{
         display: unset;
         text-align: center;
     }
-    /* -------------Detail-------------- */
     .favorite{
         display: flex;
         text-align: center!important;
@@ -1063,13 +998,12 @@ input[type=file] {
 }
 
 @media screen and (max-width:1024px){
-    /* -------------------header------------ */
     .paddingleft{
         padding-left: unset;
     }
 }
 
-@media screen and (max-width:1200px){/* nhừng màn hình nhỏ hơn hoặc bằng 1200 sẽ áp dụng các thuộc tính được khai báo bên trong*/
+@media screen and (max-width:1200px){
     .mediacenter{
         text-align: center;
     }
