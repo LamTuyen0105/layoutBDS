@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone, ElementRef, ViewChild  } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { ElementRef, ViewChild } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { MapsAPILoader, MouseEvent } from '@agm/core';
 
 import { CommonService } from 'src/app/Core/Service/Common.service';
 import { PostServiceService } from 'src/app/Core/PostService/PostService.service';
@@ -30,18 +30,20 @@ export class EditMyPostComponent implements OnInit {
     Width: 0,
     Area: 0
   };
-  latitude: number;
-  longitude: number;
-  zoom: number;
+  latitude: number = 10.762622;
+  longitude: number = 106.660172;
+  zoom: number = 12;
   imageUrl: string = "";
   fileToUpload: File = null;
   form: FormGroup;
   date = new Date;
   maxDate = new Date;
+  address: string;
+  private geoCoder;
 
-  @ViewChild('mapRef', { static: true }) mapElement: ElementRef;
-  constructor(private service: CommonService, private services: PostServiceService, private currentRoute: ActivatedRoute, private fb: FormBuilder, private datePipe: DatePipe) {
-    this.renderMap();
+  @ViewChild('search', { static: true }) searchElementRef: ElementRef;
+  constructor(private service: CommonService, private services: PostServiceService, private currentRoute: ActivatedRoute, private fb: FormBuilder, private datePipe: DatePipe,  private mapsAPILoader: MapsAPILoader,
+    private ngZone: NgZone) {
     this.form = this.fb.group({
       Title: [''],
       TypeOfTransactionId: [0],
@@ -68,12 +70,29 @@ export class EditMyPostComponent implements OnInit {
       ContactName: [''],
       EmailContact: [''],
       ContactPhone: [''],
-      ThumbnailImage: [null]
+      ThumbnailImage: [null],
+      Lat: [10.823099],
+      Lng: [106.629664],
+      checkReCaptCha: [null]
     })
   }
-
-
   ngOnInit() {
+    this.mapsAPILoader.load().then(() => {
+      this.setCurrentLocation();
+      this.geoCoder = new google.maps.Geocoder;
+      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement);
+      autocomplete.addListener("place_changed", () => {
+        this.ngZone.run(() => {
+          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+          if (place.geometry === undefined || place.geometry === null) {
+            return;
+          }
+          this.latitude = place.geometry.location.lat();
+          this.longitude = place.geometry.location.lng();
+          this.zoom = 12;
+        });
+      });
+    });
     let propertyID = this.currentRoute.snapshot.paramMap.get('id');
     this.services.getPutProperties(parseInt(propertyID)).subscribe(res => {
       this.Property = res as []
@@ -105,6 +124,8 @@ export class EditMyPostComponent implements OnInit {
       this.form.controls['EmailContact'].setValue(this.Property[0].emailContact);
       this.form.controls['ContactPhone'].setValue(this.Property[0].contactPhone);
       this.form.controls['ThumbnailImage'].setValue(this.Property[0].linkName);
+      this.latitude = this.Property[0].lat;
+      this.longitude = this.Property[0].lng;
     });
     this.service.getProvice().subscribe(res => this.Province = res as []);
     this.service.getDirection().subscribe(res => this.Direction = res as []);
@@ -162,6 +183,9 @@ export class EditMyPostComponent implements OnInit {
     formData.append("EmailContact", this.form.get('EmailContact').value);
     formData.append("ContactPhone", this.form.get('ContactPhone').value);
     formData.append("ThumbnailImage", this.form.get('ThumbnailImage').value);
+    formData.append("Lat", this.latitude);
+    formData.append("Lng", this.longitude);
+    formData.append('checkReCaptCha',this.form.get('checkReCaptCha').value);
     let propertyID = this.currentRoute.snapshot.paramMap.get('id');
     this.services.putProperties(propertyID, formData).subscribe(
       (res: any) => {
@@ -181,8 +205,12 @@ export class EditMyPostComponent implements OnInit {
       return this.service.getWard(id).subscribe(res => this.Ward = res as []);
   }
 
-  renderMap() {
-
+  async resolved(captchaResponse: string, res) {
+    console.log(`Resolved response token: ${captchaResponse}`);
+    this.form.patchValue({
+      checkReCaptCha: captchaResponse
+    });
+    this.form.get('checkReCaptCha').updateValueAndValidity()
   }
 
   handleFileInput(file: FileList, event) {
@@ -198,13 +226,45 @@ export class EditMyPostComponent implements OnInit {
     this.form.get('ThumbnailImage').updateValueAndValidity()
     reader.readAsDataURL(this.fileToUpload);
   }
+
   private setCurrentLocation() {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
-        this.zoom = 10;
+        this.zoom = 8;
+        this.getAddress(this.latitude, this.longitude);        
       });
     }
+  }
+
+  markerDragEnd($event: MouseEvent) {
+    console.log($event);
+    this.latitude = $event.coords.lat;
+    this.longitude = $event.coords.lng;
+    this.getAddress(this.latitude, this.longitude);
+  }
+
+  getAddress(latitude, longitude) {
+    this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude } }, (results, status) => {
+      console.log(results);
+      console.log(status);
+      if (status === 'OK') {
+        if (results[0]) {
+          this.zoom = 12;
+          this.address = results[0].formatted_address;  
+          this.form.patchValue({
+            Lat: latitude,
+            Lng: longitude
+          });
+          this.form.get('Lat').updateValueAndValidity()     
+          this.form.get('Lng').updateValueAndValidity()            
+        } else {
+          window.alert('No results found');
+        }
+      } else {
+        window.alert('Geocoder failed due to: ' + status);
+      }
+    });
   }
 }

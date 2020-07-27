@@ -50,14 +50,14 @@ namespace RealEstate.BackendApi.Controllers
         }
 
         [HttpGet("ViewPagingByTransaction")]
-        public async Task<IActionResult> GetAllPaging(GetViewPropertyPagingRequest request)
+        public async Task<IActionResult> GetAllPaging([FromQuery]GetViewPropertyPagingRequest request)
         {
             var properties = await _ownerPropertyService.GetAllByTypeOfTransaction(request);
             return Ok(properties);
         }
 
         [HttpGet("ViewPaging")]
-        public async Task<IActionResult> GetPaging(GetPropertyPagingRequest request)
+        public async Task<IActionResult> GetPaging([FromQuery]GetPropertyPagingRequest request)
         {
             var properties = await _ownerPropertyService.GetPaging(request);
             return Ok(properties);
@@ -74,6 +74,15 @@ namespace RealEstate.BackendApi.Controllers
         public async Task<IActionResult> GetById(int propertyId)
         {
             var property = await _ownerPropertyService.GetById(propertyId);
+            if (property == null)
+                return BadRequest("Không tìm thấy được tin đăng");
+            return Ok(property);
+        }
+
+        [HttpGet("ElasticSearch/{propertyId}")]
+        public async Task<IActionResult> GetElasticSearchById(int propertyId)
+        {
+            var property = await _ownerPropertyService.GetElasticSearchById(propertyId);
             if (property == null)
                 return BadRequest("Không tìm thấy được tin đăng");
             return Ok(property);
@@ -228,6 +237,15 @@ namespace RealEstate.BackendApi.Controllers
             if (property == null)
                 return BadRequest("Không tìm thấy tin đăng");
             return Ok(property);
+        }
+
+        [HttpPatch("{propertyId}/{delete}")]
+        public async Task<IActionResult> UpdateIsDelete(int propertyId, bool delete)
+        {
+            var isSuccessful = await _ownerPropertyService.UpdateIsDelete(propertyId, delete);
+            if (isSuccessful)
+                return Ok();
+            return BadRequest();
         }
     }
 }

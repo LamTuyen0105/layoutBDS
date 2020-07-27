@@ -71,7 +71,7 @@
                   </div>
                   <div class="form-group col-md-8">
                     <input type="text" class="form-control select color-3 border-b4 p-1" placeholder="Tên đường"
-                      formControlName="StreetNames">
+                      formControlName="StreetNames" (keydown.enter)="$event.preventDefault()" autocorrect="off" autocapitalize="off" spellcheck="off" #search>
                   </div>
                 </div>
               </div>
@@ -81,11 +81,11 @@
                   icon
                   tới đúng vị trí của tin rao.</div>
                 <div class="">
-                  <agm-map>
+                  <agm-map
                     [latitude]="latitude"
                     [longitude]="longitude"
                     [zoom]="zoom" >
-                    <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+                    <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true" (dragEnd)="markerDragEnd($event)"></agm-marker>
                   </agm-map>
                 </div>
               </div>

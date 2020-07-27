@@ -1,95 +1,65 @@
 <div class="card mb-3">
-  <div class="card-header background-organge text-white text-center font-weight-bold fontsize-14">BỘ LỌC TÌM KIẾM</div>
-  <div class="card-body">
-    <select class="select color-3 mb-2">
-      <option value="0">Loại nhà đất</option>
-      <option *ngFor="let item of TypeOfProperty" value="{{item.id}}">{{item.name}}</option>
-    </select>
-    <select class="select color-3 mb-2">
-      <option value="0">Mức giá</option>
-    </select>
-    <select class="select color-3 mb-2">
-      <option value="0">Diện tích</option>
-    </select>
-    <select class="select color-3 mb-2">
-      <option value="0">Hướng</option>
-      <option *ngFor="let item of Direction" value="{{item.id}}">{{item.name}}</option>
-    </select>
-    <select class="select color-3 mb-2">
-      <option value="0">Số phòng</option>
-    </select>
-    <select class="select color-3 mb-2">
-      <option value="0">Tình trạng</option>
-      <option *ngFor="let item of EvaluationStatus" value="{{item.id}}">{{item.name}}</option>
-    </select>
-    <select class="select color-3 mb-2" (change)="GetProvinceId($event)">
-      <option value="0">Trên toàn quốc</option>
-      <option *ngFor="let item of Province" value="{{item.id}}">{{item.name}}</option>
-    </select>
-    <select class="select color-3 mb-2" (change)="GetDistrictId($event)">
-      <option value="0">Quận/ Huyện</option>
-      <option *ngFor="let item of District" value="{{item.id}}">{{item.prefix}} {{item.name}}</option>
-    </select>
-    <select class="select color-3 mb-2">
-      <option value="0">Phường Xã</option>
-      <option *ngFor="let item of Ward" value="{{item.id}}">{{item.prefix}} {{item.name}}</option>
-    </select>
-    <div class="d-flex justify-content-center py-2">
-      <button type="button" class="btn background-organge colorads text-center btnunhover h40">Tìm kiếm ngay</button>
-    </div>
-    <div class="d-flex justify-content-center pb-2">
-      <div class="text-center price fontsize-12 font-weight-bold cursorpointer">Xóa bộ lọc nâng cao</div>
+  <div class="card-header background-organge text-white text-center font-weight-bold fontsize-14">TÌM KIẾM</div>
+  <div class="p-2 d-flex align-items-center">
+    <div class="input-group">
+      <input type="text" class="form-control formcontract borderregist" placeholder="&#xf002; Tìm kiếm"
+        aria-label="Nhập email của bạn" aria-describedby="button-addon2" value="{{title}}" name="Find" [(ngModel)]="formModels.Find">
+      <div class="input-group-append">
+        <button class="btn background-organge colorads text-justify fontsize-12 btnunhover" type="submit"
+          id="button-addon2" (click)="OnClicks()">Tìm
+          kiếm</button>
+      </div>
     </div>
   </div>
 </div>
 <div class="card">
   <div class="card-header background-organge text-white text-center font-weight-bold fontsize-14">NHÀ ĐẤT BÁN</div>
   <div class="card-body">
-    <a href="#" class="d-flex">
+    <a href="./TimKiem/Tp. Hồ Chí Minh" class="d-flex">
       <div class="price fontsize-14">Tp. Hồ Chí Minh</div>&nbsp;
       <div class="color-3 fontsize-14">(100.000/ số BĐS)</div>
     </a>
-    <a href="#" class="d-flex">
+    <a href="./TimKiem/Hà Nội" class="d-flex">
       <div class="price fontsize-14">Hà Nội</div>&nbsp;
       <div class="color-3 fontsize-14">(100.000)</div>
     </a>
-    <a href="#" class="d-flex">
+    <a href="./TimKiem/Bình Dương" class="d-flex">
       <div class="price fontsize-14">Bình Dương</div>&nbsp;
       <div class="color-3 fontsize-14">(100.000)</div>
     </a>
-    <a href="#" class="d-flex">
+    <a href="./TimKiem/Đồng Nai" class="d-flex">
       <div class="price fontsize-14">Đồng Nai</div>&nbsp;
       <div class="color-3 fontsize-14">(90.000)</div>
     </a>
-    <a href="#" class="d-flex">
+    <a href="./TimKiem/Bà Rịa Vũng Tàu" class="d-flex">
       <div class="price fontsize-14">Bà Rịa Vũng Tàu</div>&nbsp;
       <div class="color-3 fontsize-14">(80.000)</div>
     </a>
-    <a href="#" class="d-flex">
+    <a href="./TimKiem/Tiền Giang" class="d-flex">
       <div class="price fontsize-14">Tiền Giang</div>&nbsp;
       <div class="color-3 fontsize-14">(70.000)</div>
     </a>
-    <a href="#" class="d-flex">
+    <a href="./TimKiem/Tiền Giang" class="d-flex">
       <div class="price fontsize-14">Tiền Giang</div>&nbsp;
       <div class="color-3 fontsize-14">(60.000)</div>
     </a>
-    <a href="#" class="d-flex">
+    <a href="./TimKiem/Điện Biên" class="d-flex">
       <div class="price fontsize-14">Điện Biên</div>&nbsp;
       <div class="color-3 fontsize-14">(50.000)</div>
     </a>
-    <a href="#" class="d-flex">
+    <a href="./TimKiem/Lâm Đồng" class="d-flex">
       <div class="price fontsize-14">Lâm Đồng</div>&nbsp;
       <div class="color-3 fontsize-14">(40.000)</div>
     </a>
-    <a href="#" class="d-flex">
+    <a href="./TimKiem/Bình Phước" class="d-flex">
       <div class="price fontsize-14">Bình Phước</div>&nbsp;
       <div class="color-3 fontsize-14">(30.000)</div>
     </a>
-    <a href="#" class="d-flex">
+    <a href="./TimKiem/Bạc Liêu" class="d-flex">
       <div class="price fontsize-14">Bạc Liêu</div>&nbsp;
       <div class="color-3 fontsize-14">(20.000)</div>
     </a>
-    <a href="#" class="d-flex">
+    <a href="./TimKiem/Bến Tre" class="d-flex">
       <div class="price fontsize-14">Bến Tre</div>&nbsp;
       <div class="color-3 fontsize-14">(10.000)</div>
     </a>

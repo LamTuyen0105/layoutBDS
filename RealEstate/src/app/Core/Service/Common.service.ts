@@ -53,4 +53,10 @@ export class CommonService {
   getPropertyImageDefault(propertyId) {
     return this.http.get(API + '/Properties/' + propertyId + '/imagedefault');
   }
+  getViewPaging(pageindex, pagesize, typeoftransaction){
+    return this.http.get(API + '/Properties/ViewPagingByTransaction?typeOfTransactionId=' + typeoftransaction + '&PageIndex=' + pageindex + '&PageSize=' + pagesize);
+  }
+  getElsticSearchProperties(propertyId) {
+    return this.http.get(API + '/Properties/ElasticSearch/' + propertyId);
+  }
 }

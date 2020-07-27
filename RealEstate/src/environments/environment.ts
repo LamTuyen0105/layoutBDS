@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  BaseURI: 'https://localhost:5001/api'
+  BaseURI: 'https://localhost:5001/api',
+  BaseURL: 'http://115.79.28.221:9006/elastic/search'
 };
 
 /*

@@ -34,14 +34,24 @@
         </div>
         <div class="tab-content backgroundcolor-none" id="pills-tabContent">
           <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-            <div class="row">
-              <div class="col-lg-4 col-sm-6" *ngFor="let item of HotSellProperties" (click)="OnClick(item.id)">
+            <div *ngIf="Properties?.length == 0">
+              <div class="d-flex justify-content-center">
+                <img src="assets/img/empty.png" title="empty">
+                <div class="color-3 font-weight-bold">Chưa có bất động sản</div>
+              </div>
+            </div>
+            <div class="row" *ngIf="Properties?.length != 0">
+              <div class="col-lg-4 col-sm-6" *ngFor="let item of Properties" (click)="OnClick(item.id)">
                 <div class="card h-100">
                   <div class="img-list">
                     <div class="type position-absolute text-right align-self-end">
                       <span class="fontsize-12">{{item.typeOfPropertyName}}</span>
                     </div>
-                    <img class="image" src="assets/uploadimg/{{item.linkName}}" title="Home" />
+                    <div class="w-100 d-flex justify-content-center">
+                      <img class="image" *ngIf="!subStr(item.linkName)" src="{{item.linkName}}" title="Home" />
+                      <img class="image" *ngIf="subStr(item.linkName)" src="assets/uploadimg/{{item.linkName}}"
+                        title="Home" />
+                    </div>
                     <div class="status fontsize-12 position-absolute">{{item.evaluationStatusName}}</div>
                   </div>
                   <div class="card-body">
@@ -76,16 +86,20 @@
             </div>
           </div>
           <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-            <ul class="list-unstyled">
+            <ul class="list-unstyled" *ngIf="Properties?.length != 0">
               <li class="media mb-3 p-2 background-white cursorpointer d-flex align-items-center"
-                *ngFor="let item of HotSellProperties" (click)="OnClick(item.id)">
-                <div class="row">
+                *ngFor="let item of Properties" (click)="OnClick(item.id)">
+                <div class="row w-100">
                   <div class="col-lg-4 col-sm-12">
                     <div class="img-list">
                       <div class="type position-absolute text-right align-self-end">
                         <span class="fontsize-12">{{item.typeOfPropertyName}}</span>
                       </div>
-                      <img class="image" src="assets/uploadimg/{{item.linkName}}" title="Home" />
+                      <div class="w-100 d-flex justify-content-center">
+                        <img class="image" *ngIf="!subStr(item.linkName)" src="{{item.linkName}}" title="Home" />
+                        <img class="image" *ngIf="subStr(item.linkName)" src="assets/uploadimg/{{item.linkName}}"
+                          title="Home" />
+                      </div>
                       <div class="status fontsize-12 position-absolute">{{item.evaluationStatusName}}</div>
                     </div>
                   </div>
@@ -116,8 +130,9 @@
                           </div>
                         </div>
                       </div>
-                      <div class="info">
+                      <div class="d-flex">
                         <div class="price font-weight-bold"><span>{{(item.price/1000000000).toFixed(1)}} tỷ</span></div>
+                        <span class="symbol mx-1">|</span>
                         <div><span><small class="text-muted">{{((item.price/item.area)/1000000).toFixed(1)}}
                               triệu/m²</small></span></div>
                       </div>
@@ -128,17 +143,10 @@
             </ul>
           </div>
         </div>
-        <div class="text-center">
-          <div class="pagination">
-            <a href="#">❮</a>
-            <a href="#" class="active">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <a href="#">6</a>
-            <a href="#">❯</a>
-          </div>
+        <div class="d-flex justify-content-center mt-2" *ngIf="Properties?.length != 0">
+          <ngb-pagination (pageChange)="getPageFromService($event)" [pageSize]="pageSize" [collectionSize]="totalRow"
+            [(page)]="pageIndex" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true">
+          </ngb-pagination>
         </div>
         <div class="d-flex justify-content-center mt-5">
           <div class="position-relative postedit cursorpointer" (click)="OnClicks()">

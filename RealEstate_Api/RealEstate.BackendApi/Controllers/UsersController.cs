@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealEstate.Application.System.Users;
+using RealEstate.ViewModels.Service.Property;
 using RealEstate.ViewModels.System.Users;
 
 namespace RealEstate.BackendApi.Controllers
@@ -36,6 +37,21 @@ namespace RealEstate.BackendApi.Controllers
             return Ok(new { token = resultToken });
         }
 
+        [HttpPost("authenticatesocial")]
+        [AllowAnonymous]
+        public async Task<IActionResult> AuthenticateSocial(LoginRequest request)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var resultToken = await _userService.AuthencateSocial(request);
+            if (string.IsNullOrEmpty(resultToken))
+            {
+                return BadRequest("Tên đăng nhập hoặc mật khẩu không chính xác.");
+            }
+            return Ok(new { token = resultToken });
+        }
+
         [HttpPost("register")]
         [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterRequest request)
@@ -44,6 +60,21 @@ namespace RealEstate.BackendApi.Controllers
                 return BadRequest(ModelState);
 
             var result = await _userService.Register(request);
+            if (!result)
+            {
+                return BadRequest("Đăng ký không thành công.");
+            }
+            return Ok(result);
+        }
+
+        [HttpPost("registersocial")]
+        [AllowAnonymous]
+        public async Task<IActionResult> RegisterSocial(RegisterRequest request)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var result = await _userService.RegisterSocial(request);
             if (!result)
             {
                 return BadRequest("Đăng ký không thành công.");
@@ -67,6 +98,21 @@ namespace RealEstate.BackendApi.Controllers
             if (users == null)
                 return BadRequest("Không tìm thấy được tin đăng");
             return Ok(users);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> Create([FromForm] PropertyCreateRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            string userId = User.Claims.First(c => c.Type == "UserID").Value;
+            var propertyId = await _userService.Create(userId, request);
+            if (propertyId == 0)
+                return BadRequest();
+            return Ok();
         }
     }
 }

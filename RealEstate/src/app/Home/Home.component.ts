@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 // import * as $ from "jquery";
 
 import { CommonService } from 'src/app/Core/Service/Common.service';
+import { Console } from 'console';
 
 @Component({
   selector: 'app-Home',
@@ -19,6 +20,19 @@ export class HomeComponent implements OnInit {
   EvaluationStatus = [];
   HotSellProperties = [];
   HotRentProperties = [];
+  formModels = {
+    Find: '',
+    TypeOfProperty: 0,
+    Price: 0,
+    Area: 0,
+    Direction: 0,
+    RoomNumber: 0,
+    EvaluationStatus: 0,
+    Province: 0,
+    District: 0,
+    Ward: 0,
+  };
+  find: string;
 
   constructor(private router: Router, private service: CommonService) { }
 
@@ -58,7 +72,72 @@ export class HomeComponent implements OnInit {
   }
 
   OnClicks() {
-    this.router.navigateByUrl('/TimKiem');
+    let typeOfProperty;
+    let price;
+    let area;
+    let direction;
+    let roomNumber;
+    let evaluationStatus;
+    let province;
+    let district;
+    let ward;
+    if(this.formModels.TypeOfProperty != 0){
+      typeOfProperty = " " + this.formModels.TypeOfProperty;
+    }
+    else{
+      typeOfProperty = '';
+    }
+    if(this.formModels.Price != 0){
+      price = " " + this.formModels.Price;
+    }
+    else{
+      price = '';
+    }
+    if(this.formModels.Area != 0){
+      area = " " + this.formModels.Area;
+    }
+    else{
+      area = '';
+    }
+    if(this.formModels.Direction != 0){
+      direction = " hướng " + this.formModels.Direction;
+    }
+    else{
+      direction = '';
+    }
+    if(this.formModels.RoomNumber != 0){
+      roomNumber = "" + this.formModels.RoomNumber;
+    }
+    else{
+      roomNumber = '';
+    }
+    if(this.formModels.EvaluationStatus != 0){
+      evaluationStatus = " " + this.formModels.EvaluationStatus;
+    }
+    else{
+      evaluationStatus = '';
+    }
+    if(this.formModels.Province != 0){
+      province = " " + this.formModels.Province;
+    }
+    else{
+      province = '';
+    }
+    if(this.formModels.District != 0){
+      district = " " + this.formModels.District;
+    }
+    else{
+      district = '';
+    }
+    if(this.formModels.Ward != 0){
+      ward = " " + this.formModels.Ward;
+    }
+    else{
+      ward = '';
+    }
+    let findSearch = this.formModels.Find + typeOfProperty + price + area + direction + roomNumber + evaluationStatus + province + district + ward;
+    console.log(findSearch)
+    this.router.navigate(['/TimKiem/' + findSearch]);
   }
 
   GetProvinceId(event) {
@@ -77,5 +156,9 @@ export class HomeComponent implements OnInit {
 
   Rent() {
     this.router.navigateByUrl('/NhaDatThue');
+  }
+
+  subStr(data: string) {
+    return (data.substring(0, 4)) !== 'http';
   }
 }

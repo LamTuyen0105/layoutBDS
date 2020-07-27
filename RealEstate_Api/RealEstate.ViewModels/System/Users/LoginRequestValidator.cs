@@ -10,8 +10,6 @@ namespace RealEstate.ViewModels.System.Users
         public LoginRequestValidator()
         {
             RuleFor(x => x.UserName).NotEmpty().WithMessage("Tên đăng nhập không được để trống");
-            RuleFor(x => x.Password).NotEmpty().WithMessage("Mật khẩu không được để trống")
-                .MinimumLength(6).WithMessage("Mật khẩu ít nhất 6 ký tự");
         }
     }
 }

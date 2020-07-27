@@ -192,7 +192,13 @@ namespace RealEstate.Data.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Provider")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SocialId")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -412,7 +418,7 @@ namespace RealEstate.Data.Migrations
                     b.Property<DateTime>("DateSubmitted")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2020, 7, 14, 22, 7, 8, 729, DateTimeKind.Local).AddTicks(6101));
+                        .HasDefaultValue(new DateTime(2020, 7, 22, 18, 50, 44, 974, DateTimeKind.Local).AddTicks(2801));
 
                     b.Property<string>("ImagePath")
                         .IsRequired()
@@ -483,7 +489,7 @@ namespace RealEstate.Data.Migrations
                     b.Property<DateTime>("EndDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2020, 8, 13, 22, 7, 8, 758, DateTimeKind.Local).AddTicks(7374));
+                        .HasDefaultValue(new DateTime(2020, 8, 21, 18, 50, 44, 989, DateTimeKind.Local).AddTicks(2756));
 
                     b.Property<int?>("EvaluationStatusId")
                         .ValueGeneratedOnAdd()
@@ -495,6 +501,11 @@ namespace RealEstate.Data.Migrations
 
                     b.Property<int?>("HouseDirectionId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDelete")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
 
                     b.Property<double?>("Lat")
                         .HasColumnType("float");
@@ -531,7 +542,7 @@ namespace RealEstate.Data.Migrations
                     b.Property<DateTime>("StartDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2020, 7, 14, 22, 7, 8, 758, DateTimeKind.Local).AddTicks(6217));
+                        .HasDefaultValue(new DateTime(2020, 7, 22, 18, 50, 44, 989, DateTimeKind.Local).AddTicks(2163));
 
                     b.Property<bool>("Status")
                         .ValueGeneratedOnAdd()
@@ -559,7 +570,7 @@ namespace RealEstate.Data.Migrations
                     b.Property<DateTime>("UpdateDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2020, 7, 14, 22, 7, 8, 758, DateTimeKind.Local).AddTicks(8877));
+                        .HasDefaultValue(new DateTime(2020, 7, 22, 18, 50, 44, 989, DateTimeKind.Local).AddTicks(3467));
 
                     b.Property<Guid?>("UserID")
                         .HasColumnType("uniqueidentifier");

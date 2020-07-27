@@ -14,18 +14,22 @@
             </ol>
             <div class="carousel-inner d-flex slideimg">
               <div class="carousel-item justify-content-center active" *ngFor="let itemimgdefault of ImageDefault">
-                <img class="d-block" src="{{itemimgdefault.linkName}}" alt="First slide">
+                <img class="d-block" *ngIf="!subStr(itemimgdefault.linkName)" src="{{itemimgdefault.linkName}}" alt="First slide">
+                <img class="d-block w-100"  *ngIf="subStr(itemimgdefault.linkName)"
+                  src="assets/uploadimg/{{itemimgdefault.linkName}}" title="Home" />
               </div>
               <div class="carousel-item justify-content-center" *ngFor="let itemimgnon of ImageNonDefault" >
-                <img class="d-block" src="{{itemimgnon.linkName}}" alt="Second slide">
+                <img class="d-block" *ngIf="!subStr(itemimgnon.linkName)" src="{{itemimgnon.linkName}}" alt="Second slide">
+                <img class="d-block w-100" *ngIf="subStr(itemimgnon.linkName)" src="assets/uploadimg/{{itemimgnon.linkName}}"
+                  title="Home" />
               </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-              <span class="" aria-hidden="true"><i class="fas fa-angle-left"></i></span>
+              <span class="" aria-hidden="true"><i class="fas fa-angle-left left"></i></span>
               <span class="sr-only">Previous</span>
             </a>
             <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-              <span class="" aria-hidden="true"><i class="fas fa-angle-right"></i></span>
+              <span class="" aria-hidden="true"><i class="fas fa-angle-right right"></i></span>
               <span class="sr-only">Next</span>
             </a>
           </div>
@@ -125,7 +129,12 @@
             </div>
           </div>
           <div class="">
-            <agm-map></agm-map>
+            <agm-map
+              [latitude]="latitude"
+              [longitude]="longitude"
+              [zoom]="zoom" >
+              <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+            </agm-map>
           </div>
         </div>
         <div class="col-lg-3 col-md-4">
@@ -281,18 +290,6 @@
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="position-absolute pre-next t-50 ">
-              <div class="rounded-circle btn-left btn-left-new d-flex position-absolute align-content-center">
-                <button class="btn btncirclenew align-self-center">
-                  <i class="fas fa-angle-left justify-content-center d-flex align-items-center"></i>
-                </button>
-              </div>
-              <div class="rounded-circle btn-left btn-right-new d-flex position-absolute align-content-center">
-                <button class="btn btncirclenew align-self-center">
-                  <i class="fas fa-angle-right justify-content-center d-flex align-items-center"></i>
-                </button>
               </div>
             </div>
           </div>

@@ -12,18 +12,105 @@
               aria-controls="pills-profile" aria-selected="false" value="2">Nhà đất thuê</a>
           </li>
         </ul>
-        <div class="tab-content px-2" id="pills-tabContent">
+        <div class="tab-content px-3" id="pills-tabContent">
           <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
             <div class="form-row">
               <div class="form-group col-lg-12 col-sm-12 mb-0">
                 <div class="input-group my-3">
-                  <input type="text" class="form-control color-3 border-b4 p-1"
+                  <input type="text" class="form-control color-3 border-b4 p-1 pl-2"
                     placeholder="Nhập địa chỉ hoặc từ khóa tìm kiếm (ví dụ: Vinhomes)" aria-label="Nhập email của bạn"
-                    aria-describedby="button-addon2">
+                    aria-describedby="button-addon2" name="Find" [(ngModel)]="formModels.Find" (keydown.enter)="OnClicks()">
                   <div class="input-group-append w-20">
                     <button class="btn background-organge colorads btnunhoverfind border-organge w-100" type="submit"
                       id="button-addon2" (click)="OnClicks()"><img src="assets/img/search.png" title="search">&nbsp;Tìm
                       kiếm</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="text-right pb-1">
+              <a class="colorads" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+                aria-controls="collapseExample">
+                Bộ lọc nâng cao
+              </a>
+            </p>
+            <div class="collapse pb-3" id="collapseExample">
+              <div class="card card-body backgroundcolor-none py-0">
+                <div class="row">
+                  <div class="col-lg5 col-sm-6">
+                    <select class="select color-3" name="TypeOfProperty" [(ngModel)]="formModels.TypeOfProperty">
+                      <option value="0">Loại nhà đất</option>
+                      <option *ngFor="let item of TypeOfProperty" value="{{item.name}}">{{item.name}}</option>
+                    </select>
+                  </div>
+                  <div class="col-lg5 col-sm-6">
+                    <select class="select color-3" name="Price" [(ngModel)]="formModels.Price">
+                      <option value="0">Mức giá</option>
+                      <option value="Dưới 2 tỷ">Dưới 2 tỷ</option>
+                      <option value="2 tỷ - 3 tỷ">2 tỷ - 3 tỷ</option>
+                      <option value="3 tỷ - 4 tỷ">3 tỷ - 4 tỷ</option>
+                      <option value="4 tỷ - 5 tỷ">4 tỷ - 5 tỷ</option>
+                      <option value="5 tỷ - 6 tỷ">5 tỷ - 6 tỷ</option>
+                      <option value="6 tỷ - 7 tỷ">6 tỷ - 7 tỷ</option>
+                      <option value="7 tỷ - 8 tỷ">7 tỷ - 8 tỷ</option>
+                      <option value="8 tỷ - 9 tỷ">8 tỷ - 9 tỷ</option>
+                      <option value="9 tỷ - 10 tỷ">9 tỷ - 10 tỷ</option>
+                      <option value="Trên 10 tỷ">Trên 10 tỷ</option>
+                    </select></div>
+                  <div class="col-lg5 col-sm-6">
+                    <select class="select color-3" name="Area" [(ngModel)]="formModels.Area">
+                      <option value="0">Diện tích</option>
+                      <option value="Dưới 30 m2">Dưới 30 m2</option>
+                      <option value="31 m2 - 40 m2">31 m2 - 40 m2</option>
+                      <option value="41 m2 - 50 m2">41 m2 - 50 m2</option>
+                      <option value="51 m2 - 60 m2">51 m2 - 60 m2</option>
+                      <option value="61 m2 - 70 m2">61 m2 - 70 m2</option>
+                      <option value="71 m2 - 80 m2">71 m2 - 80 m2</option>
+                      <option value="81 m2 - 90 m2">81 m2 - 90 m2</option>
+                      <option value="91 m2 - 100 m2">91 m2 - 100 m2</option>
+                      <option value="Trên 100 m2">Trên 100 m2</option>
+                    </select>
+                  </div>
+                  <div class="col-lg5 col-sm-6">
+                    <select class="select color-3" name="Direction" [(ngModel)]="formModels.Direction">
+                      <option value="0">Hướng</option>
+                      <option *ngFor="let item of Direction" value="{{item.name}}">{{item.name}}</option>
+                    </select>
+                  </div>
+                  <div class="col-lg5 col-sm-6">
+                    <select class="select color-3" name="RoomNumber" [(ngModel)]="formModels.RoomNumber">
+                      <option value="0">Số phòng</option>
+                      <option value="1 phòng - 2 phòng">1 phòng - 2 phòng</option>
+                      <option value="2 phòng - 3 phòng">2 phòng - 3 phòng</option>
+                      <option value="3 phòng - 4 phòng">3 phòng - 4 phòng</option>
+                      <option value="Trên 4 phòng">Trên 4 phòng</option>
+                    </select>
+                  </div>
+                  <div class="col-lg5 col-sm-6">
+                    <select class="select color-3" name="EvaluationStatus" [(ngModel)]="formModels.EvaluationStatus">
+                      <option value="0">Tình trạng</option>
+                      <option *ngFor="let item of EvaluationStatus" value="{{item.name}}">{{item.name}}</option>
+                    </select>
+                  </div>
+                  <div class="col-lg5 col-sm-6">
+                    <select class="select color-3" name="Province" [(ngModel)]="formModels.Province">
+                      <option value="0">Trên toàn quốc</option>
+                      <option *ngFor="let item of Province" value="{{item.name}}">{{item.name}}</option>
+                    </select>
+                  </div>
+                  <div class="col-lg5 col-sm-6">
+                    <select class="select color-3" name="District" [(ngModel)]="formModels.District">
+                      <option value="0">Quận/ Huyện</option>
+                      <option *ngFor="let item of District" value="{{item.prefix}} {{item.name}}">{{item.prefix}}
+                        {{item.name}}</option>
+                    </select>
+                  </div>
+                  <div class="col-lg5 col-sm-6">
+                    <select class="select color-3" name="Ward" [(ngModel)]="formModels.Ward">
+                      <option value="0">Phường Xã</option>
+                      <option *ngFor="let item of Ward" value="{{item.prefix}} {{item.name}}">{{item.prefix}}
+                        {{item.name}}</option>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -33,12 +120,101 @@
             <div class="row">
               <div class="col-lg-12 col-sm-12">
                 <div class="input-group my-3">
-                  <input type="text" class="form-control color-3 border-b4 p-1" placeholder="Tìm kiếm"
-                    aria-label="Nhập email của bạn" aria-describedby="button-addon2">
+                  <input type="text" class="form-control color-3 border-b4 p-1 pl-2" placeholder="Tìm kiếm"
+                    aria-label="Nhập email của bạn" aria-describedby="button-addon2" name="Find"
+                    [(ngModel)]="formModels.Find" (keydown.enter)="OnClicks()">
                   <div class="input-group-append w-20">
                     <button class="btn background-organge colorads btnhover btn-outline-success border-organge w-100"
-                      type="button" id="button-addon2"><img src="assets/img/search.png" title="search">&nbsp;Tìm
+                      type="submit" id="button-addon2" (click)="OnClicks()"><img src="assets/img/search.png"
+                        title="search">&nbsp;Tìm
                       kiếm</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="text-right pb-1">
+              <a class="colorads" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+                aria-controls="collapseExample">
+                Bộ lọc nâng cao
+              </a>
+            </p>
+            <div class="collapse pb-3" id="collapseExample">
+              <div class="card card-body backgroundcolor-none py-0">
+                <div class="row">
+                  <div class="col-lg5 col-sm-6">
+                    <select class="select color-3" name="TypeOfProperty" [(ngModel)]="formModels.TypeOfProperty">
+                      <option value="0">Loại nhà đất</option>
+                      <option *ngFor="let item of TypeOfProperty" value="{{item.name}}">{{item.name}}</option>
+                    </select>
+                  </div>
+                  <div class="col-lg5 col-sm-6">
+                    <select class="select color-3" name="Price" [(ngModel)]="formModels.Price">
+                      <option value="0">Mức giá</option>
+                      <option value="Dưới 2 tỷ">Dưới 2 tỷ</option>
+                      <option value="2 tỷ - 3 tỷ">2 tỷ - 3 tỷ</option>
+                      <option value="3 tỷ - 4 tỷ">3 tỷ - 4 tỷ</option>
+                      <option value="4 tỷ - 5 tỷ">4 tỷ - 5 tỷ</option>
+                      <option value="5 tỷ - 6 tỷ">5 tỷ - 6 tỷ</option>
+                      <option value="6 tỷ - 7 tỷ">6 tỷ - 7 tỷ</option>
+                      <option value="7 tỷ - 8 tỷ">7 tỷ - 8 tỷ</option>
+                      <option value="8 tỷ - 9 tỷ">8 tỷ - 9 tỷ</option>
+                      <option value="9 tỷ - 10 tỷ">9 tỷ - 10 tỷ</option>
+                      <option value="Trên 10 tỷ">Trên 10 tỷ</option>
+                    </select></div>
+                  <div class="col-lg5 col-sm-6">
+                    <select class="select color-3" name="Area" [(ngModel)]="formModels.Area">
+                      <option value="0">Diện tích</option>
+                      <option value="Dưới 30 m2">Dưới 30 m2</option>
+                      <option value="31 m2 - 40 m2">31 m2 - 40 m2</option>
+                      <option value="41 m2 - 50 m2">41 m2 - 50 m2</option>
+                      <option value="51 m2 - 60 m2">51 m2 - 60 m2</option>
+                      <option value="61 m2 - 70 m2">61 m2 - 70 m2</option>
+                      <option value="71 m2 - 80 m2">71 m2 - 80 m2</option>
+                      <option value="81 m2 - 90 m2">81 m2 - 90 m2</option>
+                      <option value="91 m2 - 100 m2">91 m2 - 100 m2</option>
+                      <option value="Trên 100 m2">Trên 100 m2</option>
+                    </select>
+                  </div>
+                  <div class="col-lg5 col-sm-6">
+                    <select class="select color-3" name="Direction" [(ngModel)]="formModels.Direction">
+                      <option value="0">Hướng</option>
+                      <option *ngFor="let item of Direction" value="{{item.name}}">{{item.name}}</option>
+                    </select>
+                  </div>
+                  <div class="col-lg5 col-sm-6">
+                    <select class="select color-3" name="RoomNumber" [(ngModel)]="formModels.RoomNumber">
+                      <option value="0">Số phòng</option>
+                      <option value="1 phòng - 2 phòng">1 phòng - 2 phòng</option>
+                      <option value="2 phòng - 3 phòng">2 phòng - 3 phòng</option>
+                      <option value="3 phòng - 4 phòng">3 phòng - 4 phòng</option>
+                      <option value="Trên 4 phòng">Trên 4 phòng</option>
+                    </select>
+                  </div>
+                  <div class="col-lg5 col-sm-6">
+                    <select class="select color-3" name="EvaluationStatus" [(ngModel)]="formModels.EvaluationStatus">
+                      <option value="0">Tình trạng</option>
+                      <option *ngFor="let item of EvaluationStatus" value="{{item.name}}">{{item.name}}</option>
+                    </select>
+                  </div>
+                  <div class="col-lg5 col-sm-6">
+                    <select class="select color-3" name="Province" [(ngModel)]="formModels.Province">
+                      <option value="0">Trên toàn quốc</option>
+                      <option *ngFor="let item of Province" value="{{item.name}}">{{item.name}}</option>
+                    </select>
+                  </div>
+                  <div class="col-lg5 col-sm-6">
+                    <select class="select color-3" name="District" [(ngModel)]="formModels.District">
+                      <option value="0">Quận/ Huyện</option>
+                      <option *ngFor="let item of District" value="{{item.prefix}} {{item.name}}">{{item.prefix}}
+                        {{item.name}}</option>
+                    </select>
+                  </div>
+                  <div class="col-lg5 col-sm-6">
+                    <select class="select color-3" name="Ward" [(ngModel)]="formModels.Ward">
+                      <option value="0">Phường Xã</option>
+                      <option *ngFor="let item of Ward" value="{{item.prefix}} {{item.name}}">{{item.prefix}}
+                        {{item.name}}</option>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -83,7 +259,9 @@
                   <span class="fontsize-12">{{item.typeOfPropertyName}}</span>
                 </div>
                 <div class="w-100 d-flex justify-content-center">
-                  <img class="image" src="{{item.linkName}}" title="Home" />
+                  <img class="image" *ngIf="!subStr(item.linkName)" src="{{item.linkName}}" title="Home" />
+                  <img class="image" *ngIf="subStr(item.linkName)" src="assets/uploadimg/{{item.linkName}}"
+                    title="Home" />
                 </div>
                 <div class="status fontsize-12 position-absolute">{{item.evaluationStatusName}}</div>
               </div>
@@ -130,7 +308,9 @@
                   <span class="fontsize-12">{{item.typeOfPropertyName}}</span>
                 </div>
                 <div class="w-100 d-flex justify-content-center">
-                  <img class="image" src="{{item.linkName}}" title="Home" />
+                  <img class="image" *ngIf="!subStr(item.linkName)" src="{{item.linkName}}" title="Home" />
+                  <img class="image" *ngIf="subStr(item.linkName)" src="assets/uploadimg/{{item.linkName}}"
+                    title="Home" />
                 </div>
                 <div class="status fontsize-12 position-absolute">{{item.evaluationStatusName}}</div>
               </div>
@@ -237,46 +417,46 @@
       <div id="myCarousel" class="carousel slide w-100" data-ride="carousel">
         <div class="carousel-inner w-100" role="listbox">
           <div class="carousel-item active">
-            <div class="col-lg-2 col-sm-4 col-6">
+            <a href="./TimKiem/bán nhà quận 7" class="col-lg-2 col-sm-4 col-6">
               <div class="keytext colortext fontsize-14 justify-content-center d-flex align-items-center">
                 bán nhà quận 7
               </div>
-            </div>
+            </a>
           </div>
           <div class="carousel-item">
-            <div class="col-lg-2 col-sm-4 col-6">
+            <a href="./TimKiem/bán nhà quận 9" class="col-lg-2 col-sm-4 col-6">
               <div class="keytext colortext fontsize-14 justify-content-center d-flex align-items-center">
                 bán nhà quận 9
               </div>
-            </div>
+            </a>
           </div>
           <div class="carousel-item">
-            <div class="col-lg-2 col-sm-4 col-6">
+            <a href="./TimKiem/chung cư quận 9" class="col-lg-2 col-sm-4 col-6">
               <div class="keytext colortext fontsize-14 justify-content-center d-flex align-items-center">
                 chung cư quận 9
               </div>
-            </div>
+            </a>
           </div>
           <div class="carousel-item">
-            <div class="col-lg-2 col-sm-4 col-6">
+            <a href="./TimKiem/chung cư quận 4" class="col-lg-2 col-sm-4 col-6">
               <div class="keytext colortext fontsize-14 justify-content-center d-flex align-items-center">
                 chung cư quận 4
               </div>
-            </div>
+            </a>
           </div>
           <div class="carousel-item">
-            <div class="col-lg-2 col-sm-4 col-6">
+            <a href="./TimKiem/thuê nhà quận 10" class="col-lg-2 col-sm-4 col-6">
               <div class="keytext colortext fontsize-14 justify-content-center d-flex align-items-center">
                 thuê nhà quận 10
               </div>
-            </div>
+            </a>
           </div>
           <div class="carousel-item">
-            <div class="col-lg-2 col-sm-4 col-6">
+            <a href="./TimKiem/thuê nhà quận 10" class="col-lg-2 col-sm-4 col-6">
               <div class="keytext colortext fontsize-14 justify-content-center d-flex align-items-center">
                 thuê nhà quận 10
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>

@@ -1663,6 +1663,7 @@
       "RealEstate.Application/1.0.0": {
         "dependencies": {
           "Microsoft.IdentityModel.Tokens": "6.6.0",
+          "Newtonsoft.Json": "10.0.1",
           "RealEstate.Data": "1.0.0",
           "RealEstate.Utilities": "1.0.0",
           "RealEstate.ViewModels": "1.0.0",
@@ -1701,6 +1702,7 @@
         "dependencies": {
           "FluentValidation.AspNetCore": "8.6.2",
           "Microsoft.AspNetCore.Http.Extensions": "2.2.0",
+          "Newtonsoft.Json": "10.0.1",
           "RealEstate.Data": "1.0.0"
         },
         "runtime": {

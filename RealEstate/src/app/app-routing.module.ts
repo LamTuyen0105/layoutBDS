@@ -16,6 +16,7 @@ import { SellComponent } from './Sell/Sell.component';
 import { ForRentComponent } from './ForRent/ForRent.component';
 import { NeedToBuyComponent } from './NeedToBuy/NeedToBuy.component';
 import { NeedToRentComponent } from './NeedToRent/NeedToRent.component';
+import { DetailSearchComponent } from './DetailSearch/DetailSearch.component';
 
 const routes: Routes = [{ path: '', redirectTo: 'TrangChu', pathMatch: 'full' },
   { path: 'DPSRealestate', component: MasterpageComponent },
@@ -28,14 +29,15 @@ const routes: Routes = [{ path: '', redirectTo: 'TrangChu', pathMatch: 'full' },
   { path: 'DangTin', component: PostComponent },
   { path: 'ChiTiet/:id', component: DetailComponent },
   { path: 'ChiTietTinTuc', component: NewsdetailsComponent },
-  { path: 'TimKiem', component: SearchComponent },
+  { path: 'TimKiem/:find', component: SearchComponent },
   { path: 'ThongTin', component: ProfileComponent, canActivate:[AuthGuard] },
   { path: 'QuanLyTin', component: MyPostComponent, canActivate:[AuthGuard] },
-  { path: 'TinChinhSua/:id', component: EditMyPostComponent, canActivate:[AuthGuard] }
+  { path: 'TinChinhSua/:id', component: EditMyPostComponent, canActivate:[AuthGuard] },
+  { path: 'ChiTietTimKiem/:id', component: DetailSearchComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

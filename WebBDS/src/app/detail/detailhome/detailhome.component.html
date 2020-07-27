@@ -1,0 +1,35 @@
+<div class="h05">
+    <h5>Quản lý tin rao bán cho thuê</h5>
+</div>
+<div>
+    <div class="grid-table mg">
+        <div class="thead">
+            <div class="tr">
+                <div class="td">ID</div>
+                <div class="td">Tiêu Đề</div>
+                <div class="td">Tên đầy đủ </div>
+                <div class="td">Trạng thái</div>
+                <div class="td">Chi tiết</div>
+            </div>
+        </div>
+        <div class="tbody">
+            <form class="tr" *ngFor="let fg of Property">
+                    <div class="td">
+                        <input value="{{fg.id}}" class="form-control" disabled>
+                    </div>
+                    <div class="td">
+                        <input value="{{fg.tilte}}" class="form-control" disabled>
+                    </div>
+                    <div class="td">
+                        <input value="{{fg.fullName}}" class="form-control" disabled>
+                    </div>
+                    <div class="td">
+                        <input value="{{fg.status}}" class="form-control" disabled>
+                    </div>
+                    <div class="td" (click)="OnClick(fg.id)">
+                        <a class="underline">Xem chi tiết</a>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>

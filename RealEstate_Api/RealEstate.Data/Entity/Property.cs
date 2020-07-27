@@ -46,6 +46,7 @@ namespace RealEstate.Data.Entity
         public LegalPaper LegalPaper { get; set; }
         public EvaluationStatus EvaluationStatus { get; set; }
         public AppUser AppUser { get; set; }
+        public bool IsDelete { get; set; }
 
         public List<PropertyImage> PropertyImages { get; set; }
         public List<Favorite> Favorites { get; set; }

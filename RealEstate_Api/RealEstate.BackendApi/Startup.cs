@@ -117,6 +117,8 @@ namespace RealEstate.BackendApi
                 };
             });
         }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -131,12 +133,11 @@ namespace RealEstate.BackendApi
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseCors(x => x
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .SetIsOriginAllowed(origin => true)
-                .AllowCredentials());          
+                .AllowCredentials());           
 
             app.UseRouting();
             app.UseAuthentication();

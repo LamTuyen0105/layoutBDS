@@ -59,4 +59,20 @@ constructor(private fb: FormBuilder, private http: HttpClient) { }
   getPropertyUser() {
     return this.http.get(API + '/Properties/PropertyByUser');
   }
+
+  postPropertyUser(form) {
+    return this.http.post(API + '/Users', form);
+  }
+
+  registersocial(formdata) {    
+    return this.http.post(API + '/Users/registersocial', formdata);
+  }
+
+  loginsocial(formData) {
+    return this.http.post(API + '/Users/authenticatesocial', formData);
+  }
+
+  VerifyEmail(email){
+    return this.http.get('https://app.verify-email.org/api/v1/JrnkBFfmE9gCGzRL1FO3cWhXJSUNQkBiVC3almzIRVAraY1ZfG/verify/' + email);
+  }
 }

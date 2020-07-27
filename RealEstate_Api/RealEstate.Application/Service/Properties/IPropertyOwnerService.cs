@@ -18,6 +18,8 @@ namespace RealEstate.Application.Service.NewsManagers
 
         Task<List<PropertyViewModel>> GetById(int propertyId);
 
+        Task<List<PropertyViewModel>> GetElasticSearchById(int propertyId);
+
         Task<List<PropertyForPutViewModel>> GetPutById(int propertyId);
 
         Task <PagedResult<PropertyViewModel>> Find(GetFindPropertyPagingRequest request);
@@ -51,6 +53,8 @@ namespace RealEstate.Application.Service.NewsManagers
         Task<List<PropertyImageViewModel>> GetImageDefault(int propertyId);
 
         Task<List<PropertyImageViewModel>> GetImageNonDefault(int propertyId);
+
+        Task<bool> UpdateIsDelete(int propertyId, bool delete);
 
     }
 }

@@ -15,7 +15,7 @@
             <div class="pb-3">
               <h3 class="font-weight-bold fontsize-24 color-3">Thông tin bất động sản</h3>
             </div>
-            <form [formGroup]="form" (submit)="onSubmit()">
+            <form [formGroup]="form">
               <div class="form-group">
                 <div class="font-weight-bold mb-3">Tiêu đề <span class="note">*</span></div>
                 <textarea type="text" class="form-control textarea color-3 border-b4 p-1" rows="3" placeholder="Tiêu đề"
@@ -70,7 +70,8 @@
                   </div>
                   <div class="form-group col-md-8">
                     <input type="text" class="form-control select color-3 border-b4 p-1" placeholder="Tên đường"
-                      formControlName="StreetNames">
+                      formControlName="StreetNames" (keydown.enter)="$event.preventDefault()" autocorrect="off"
+                      autocapitalize="off" spellcheck="off" #search>
                   </div>
                 </div>
               </div>
@@ -81,11 +82,9 @@
                   trí tin rao của bạn trên bản đồ bằng cách kéo <img src="assets/img/map.png" title="mapmarker"> icon
                   tới đúng vị trí của tin rao.</div>
                 <div class="">
-                  <agm-map>
-                    [latitude]="latitude"
-                    [longitude]="longitude"
-                    [zoom]="zoom" >
-                    <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+                  <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+                    <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
+                      (dragEnd)="markerDragEnd($event)"></agm-marker>
                   </agm-map>
                 </div>
               </div>
@@ -152,8 +151,7 @@
                       <div class="col-md-3 d-flex align-items-center pl0">Chiều rộng</div>
                       <div class="col-md-9 pl0">
                         <input type="number" class="form-control select color-3 border-b4 p-1 pl0" placeholder="Số mét"
-                          name="Width" [(ngModel)]="formModels.Width" [(ngModel)]="form.Width" formControlName="Width"
-                          (change)="Area()">
+                          name="Width" [(ngModel)]="formModels.Width" formControlName="Width" (change)="Area()">
                       </div>
                     </div>
                   </div>
@@ -230,7 +228,7 @@
                       <div class="col-md-9 pl0">
                         <input type="date" class="form-control select color-3 border-b4 p-1"
                           [min]="endDate | date : 'yyyy-MM-dd'" [max]="maxDate | date : 'yyyy-MM-dd'"
-                          [value]="maxDate | date : 'yyyy-MM-dd'" formControlName="EndDate">
+                          [value]="date | date : 'yyyy-MM-dd'" formControlName="EndDate">
                       </div>
                     </div>
                   </div>
@@ -262,7 +260,9 @@
                       <div class="col-md-3 pl0 d-flex align-items-center pl0">Email</div>
                       <div class="col-md-9 pl0">
                         <input type="email" class="form-control select color-3 border-b4 p-1" placeholder="Email"
-                          formControlName="EmailContact">
+                          formControlName="EmailContact" name="email" [(ngModel)]="formemail.email" (change)="VerifyEmail()">
+                        <label class="text-danger" [hidden]="emailerror === false" *ngIf="emailerror === true">Email
+                          không tồn tại.</label>
                       </div>
                     </div>
                   </div>
@@ -271,9 +271,9 @@
               <div class="form-group">
                 <div class="font-weight-bold">Hình ảnh và video <span class="note">*</span></div>
                 <div class="fontsize-14 color ">Hình ảnh tối đa 8 ảnh, mỗi ảnh tối đa 2MB</div>
-                <div class="d-flex flex-wrap-reverse">
-                  <div class="py-1 pr-3" [hidden]="imageUrl == ''">
-                    <img class="w-100" [src]="imageUrl" title="Image">
+                <div class="d-flex flex-wrap">
+                  <div class="py-1 pr-3 d-flex" *ngFor='let url of imageUrl' [hidden]="imageUrl == ''">
+                    <img class="imgs" [src]="url" title="Image">
                   </div>
                   <div class="ajax-file-upload image-upload py-1 pr-3">
                     <label for="upload-file" class="img-pointer">
@@ -282,7 +282,7 @@
                     </label>
                     <input class="form-control-file" type="file" id="upload-file" data-target="#image_listing"
                       name="image_file[]" accept="image/*, video/*" multiple="" name="Image"
-                      (change)="handleFileInput($event.target.files, $event)">
+                      (change)="handleFileInput($event.target.files, $event)">                      
                   </div>
                 </div>
               </div>
@@ -296,11 +296,16 @@
                 </label>
               </div>
               <div class="d-flex justify-content-center">
-                <re-captcha></re-captcha>
+                <re-captcha (resolved)="resolved($event)" formControlName="checkReCaptCha"></re-captcha>
               </div>
               <div class="d-flex justify-content-center flex-wrap">
                 <div class="p-1">
-                  <button type="submit" class="btn btn-success h40">Đăng tin</button>
+                  <button type="submit" (click)="onSubmit()"
+                    class="btn background-organge colorads text-center btnunhover h40">Đăng tin
+                    không cần tài khoản</button>
+                </div>
+                <div class="p-1">
+                  <button type="submit" (click)="onSubmits()" class="btn btn-success h40">Đăng tin</button>
                 </div>
               </div>
             </form>

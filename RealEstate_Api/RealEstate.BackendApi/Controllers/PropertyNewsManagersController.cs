@@ -27,5 +27,12 @@ namespace RealEstate.BackendApi.Controllers
                 return Ok();
             return BadRequest();
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllForManager()
+        {
+            var properties = await _propertyNewsManagerService.GetAllForManager();
+            return Ok(properties);
+        }
     }
 }

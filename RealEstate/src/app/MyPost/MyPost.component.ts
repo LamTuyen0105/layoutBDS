@@ -19,6 +19,7 @@ export class MyPostComponent implements OnInit {
     this.service.getPropertyUser().subscribe(
       res => {
         this.userProperty = res;
+        console.log(res)
       },
       err => {
         console.log(err);
@@ -31,10 +32,24 @@ export class MyPostComponent implements OnInit {
   }
 
   OnClickDelete(id: number) {
+    if(confirm('Bạn chắc muốn xóa?')){
     this.services.deletteProperties(id).subscribe(res => {
       console.log(res)
+      this.service.getPropertyUser().subscribe(
+        res => {
+          this.userProperty = res;
+          console.log(res)
+        },
+        err => {
+          console.log(err);
+        },
+      );
       },
       error => console.log(error)
-    );      
+    );}      
+  }
+
+  subStr(data: string){
+    return (data.substring(0,4)) !== 'http';
   }
 }

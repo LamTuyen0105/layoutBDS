@@ -27,6 +27,7 @@ constructor(private fb: FormBuilder, private http: HttpClient) { }
   }
 
   deletteProperties(propertyId){
-    return this.http.delete(API + '/Properties/' + propertyId);
+    let formData;
+    return this.http.patch(API + '/Properties/' + propertyId + '/true', formData);
   }
 }

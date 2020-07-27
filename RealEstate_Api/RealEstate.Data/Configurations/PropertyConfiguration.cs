@@ -30,6 +30,7 @@ namespace RealEstate.Data.Configurations
             builder.Property(x => x.EndDate).HasDefaultValue(DateTime.Now.AddDays(30));
             builder.Property(x => x.UpdateDate).HasDefaultValue(DateTime.Now);
             builder.Property(x => x.Status).HasDefaultValue(false);
+            builder.Property(x => x.IsDelete).HasDefaultValue(false);
             builder.HasOne(x => x.TypeOfProperty).WithMany(x => x.Properties).HasForeignKey(x => x.TypeOfPropertyId);
             builder.HasOne(x => x.TypeOfTransaction).WithMany(x => x.Properties).HasForeignKey(x => x.TypeOfTransactionId);
             builder.HasOne(x => x.Ward).WithMany(x => x.Properties).HasForeignKey(x => x.WardId);

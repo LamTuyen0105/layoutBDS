@@ -9,10 +9,11 @@ namespace RealEstate.Data.Entity
     {
         public string Avatar { get; set; }
         public string FullName { get; set; }
-
         public int? WardId { get; set; }
         public string Gender { get; set; }
         public string IdentityNumber { get; set; }
+        public string Provider { get; set; }
+        public string SocialId { get; set; }
 
         public Ward Ward { get; set; }
 

@@ -20,5 +20,11 @@ namespace RealEstate.ViewModels.System.Users
         public string Password { get; set; }
 
         public string ConfirmPassword { get; set; }
+
+        public string Provider { get; set; }
+
+        public string SocialId { get; set; }
+
+        public string checkReCaptCha { get; set; }
     }
 }

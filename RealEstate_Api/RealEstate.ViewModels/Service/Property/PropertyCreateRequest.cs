@@ -36,6 +36,7 @@ namespace RealEstate.ViewModels.Service.Property
         public string EmailContact { get; set; }
         public string ContactPhone { get; set; }
         public Guid? UserID { get; set; }
-        public IFormFile ThumbnailImage { get; set; }
+        public IList<IFormFile> ThumbnailImage { get; set; }
+        public string checkReCaptCha { get; set; }
     }
 }

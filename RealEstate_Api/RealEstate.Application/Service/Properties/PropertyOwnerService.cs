@@ -16,6 +16,9 @@ using System.Net.Http.Headers;
 using System.IO;
 using System.Drawing;
 using System.Net;
+using System.Net.Http;
+using RealEstate.ViewModels.System.Users;
+using Newtonsoft.Json;
 
 namespace RealEstate.Application.Service.NewsManagers
 {
@@ -86,21 +89,41 @@ namespace RealEstate.Application.Service.NewsManagers
                 ContactPhone = request.ContactPhone,
                 UserID = request.UserID,
             };
-            if (request.ThumbnailImage != null)
+            if (request.ThumbnailImage != null && request.ThumbnailImage.Count > 0)
             {
-
-                property.PropertyImages = new List<PropertyImage>()
+                property.PropertyImages = new List<PropertyImage>();
+                foreach (var item in request.ThumbnailImage)
                 {
-                    new PropertyImage()
+                    if (property.PropertyImages.Count == 0)
                     {
-                        Caption = "Thumbnail image",
-                        DateCreated = DateTime.Now,
-                        FileSize = request.ThumbnailImage.Length,
-                        LinkName = await this.SaveFile(request.ThumbnailImage),
-                        IsDefault = true,
-                        SortOrder = 1
+                        property.PropertyImages.Add(new PropertyImage()
+                        {
+                            Caption = "Thumbnail image",
+                            DateCreated = DateTime.Now,
+                            FileSize = item.Length,
+                            LinkName = await this.SaveFile(item),
+                            IsDefault = true,
+                            SortOrder = 1
+                        });
                     }
-                };
+                    else
+                    {
+                        property.PropertyImages.Add(new PropertyImage()
+                        {
+                            Caption = "Thumbnail image",
+                            DateCreated = DateTime.Now,
+                            FileSize = item.Length,
+                            LinkName = await this.SaveFile(item),
+                            IsDefault = false,
+                            SortOrder = 2
+                        });
+                    }
+                }
+            }
+            var IsValid_capcha = await validateCaptchaAsync(request.checkReCaptCha ?? "");
+            if (!IsValid_capcha)
+            {
+                return 0;
             }
             _context.Properties.Add(property);
             await _context.SaveChangesAsync();
@@ -134,7 +157,7 @@ namespace RealEstate.Application.Service.NewsManagers
                         join l in _context.LegalPapers on p.LegalPapersId equals l.Id
                         join i in _context.PropertyImages on p.Id equals i.PropertyId into joined
                         from j in (from i in joined where i.IsDefault == true select i).DefaultIfEmpty()
-                        where p.Status == true
+                        where p.Status == true && p.IsDelete == false
                         select new { p, pc, ds, tt, tp, e, d, j, l };
             if (request.TypeOfTransactionIds.Count > 0)
                 query = query.Where(x => request.TypeOfTransactionIds.Contains(x.tt.Id));
@@ -349,7 +372,7 @@ namespace RealEstate.Application.Service.NewsManagers
                         join pc in _context.Provinces on ds.ProvinceId equals pc.Id
                         join i in _context.PropertyImages on p.Id equals i.PropertyId into joined
                         from j in (from i in joined where i.IsDefault == true select i).DefaultIfEmpty()
-                        where p.Status == true
+                        where p.Status == true && p.IsDelete == false
                         select new { p, pc, ds, tt, tp, e, d, j, l };
             var data = await query.Select(x => new PropertyViewModel()
                 {
@@ -397,6 +420,7 @@ namespace RealEstate.Application.Service.NewsManagers
                         join pc in _context.Provinces on ds.ProvinceId equals pc.Id
                         join i in _context.PropertyImages on p.Id equals i.PropertyId into joined
                         from j in (from i in joined where i.IsDefault == true select i).DefaultIfEmpty()
+                        where p.Status == true && p.IsDelete == false
                         select new { p, pc, ds, tt, tp, e, d, j, l };
             if (request.typeOfTransactionId.HasValue && request.typeOfTransactionId >0)
                 query = query.Where(x => x.p.TypeOfTransactionId == request.typeOfTransactionId);
@@ -433,7 +457,8 @@ namespace RealEstate.Application.Service.NewsManagers
                     Lng = x.p.Lng,
                     ContactName = x.p.ContactName,
                     EmailContact = x.p.EmailContact,
-                    ContactPhone = x.p.ContactPhone
+                    ContactPhone = x.p.ContactPhone,
+                    Status = x.p.Status
                 }).ToListAsync();
             var pagedResult = new PagedResult<PropertyViewModel>()
             {
@@ -463,7 +488,7 @@ namespace RealEstate.Application.Service.NewsManagers
                         join pc in _context.Provinces on ds.ProvinceId equals pc.Id
                         join i in _context.PropertyImages on p.Id equals i.PropertyId into joined
                         from j in (from i in joined where i.IsDefault == true select i).DefaultIfEmpty()
-                        where p.Status == true
+                        where p.Status == true && p.IsDelete == false
                         select new { p, w, tt, d, tp, e, ds, pc, j, l };
             if (request.typeOfTransactionId > 0)
                 query = query.Where(x => x.p.TypeOfTransactionId == request.typeOfTransactionId);
@@ -541,6 +566,7 @@ namespace RealEstate.Application.Service.NewsManagers
                         join pc in _context.Provinces on ds.ProvinceId equals pc.Id
                         join i in _context.PropertyImages on p.Id equals i.PropertyId into joined
                         from j in (from i in joined where i.IsDefault == true select i).DefaultIfEmpty()
+                        where p.Status == true && p.IsDelete == false
                         select new { p, ds, pc, tt, tp, e, d, j, l };
 
             int totalRow = await query.CountAsync();
@@ -598,7 +624,7 @@ namespace RealEstate.Application.Service.NewsManagers
                          join pc in _context.Provinces on ds.ProvinceId equals pc.Id
                          join i in _context.PropertyImages on p.Id equals i.PropertyId into joined
                          from j in (from i in joined where i.IsDefault == true select i).DefaultIfEmpty()
-                         where p.Status == true
+                         where p.Status == true && p.IsDelete == false
                          select new { p, ds, pc, tt, tp, e, d, j, l }).Take(8);
             var data = await query.Select(x => new PropertyViewModel()
             {
@@ -646,7 +672,7 @@ namespace RealEstate.Application.Service.NewsManagers
                          join l in _context.LegalPapers on p.LegalPapersId equals l.Id
                          join i in _context.PropertyImages on p.Id equals i.PropertyId into joined
                          from j in (from i in joined where i.IsDefault == true select i).DefaultIfEmpty()
-                         where p.Status == true && tt.Id == 1
+                         where p.Status == true && tt.Id == 1 && p.IsDelete == false
                          select new { p, ds, pc, tt, tp, e, d, j, l }).Take(8);
             var data = await query.Select(x => new PropertyViewModel()
             {
@@ -694,7 +720,7 @@ namespace RealEstate.Application.Service.NewsManagers
                          join pc in _context.Provinces on ds.ProvinceId equals pc.Id
                          join i in _context.PropertyImages on p.Id equals i.PropertyId into joined
                          from j in (from i in joined where i.IsDefault == true select i).DefaultIfEmpty()
-                         where p.Status == true && tt.Id == 2
+                         where p.Status == true && tt.Id == 2 && p.IsDelete == false
                          select new { p, ds, pc, tt, tp, e, d, j, l }).Take(8);
             var data = await query.Select(x => new PropertyViewModel()
             {
@@ -774,7 +800,7 @@ namespace RealEstate.Application.Service.NewsManagers
                         join pc in _context.Provinces on ds.ProvinceId equals pc.Id
                         join i in _context.PropertyImages on p.Id equals i.PropertyId into joined
                         from j in (from i in joined where i.IsDefault == true select i).DefaultIfEmpty()
-                        where p.UserID == Guid.Parse(userId)
+                        where p.UserID == Guid.Parse(userId) && p.IsDelete == false
                         select new { p, pc, ds, tt, tp, e, d, j, l };
             var data = await query.Select(x => new PropertyViewModel()
             {
@@ -862,6 +888,97 @@ namespace RealEstate.Application.Service.NewsManagers
                 Status = x.p.Status
             }).ToListAsync();
             return data;
+        }
+
+        public async Task<List<PropertyViewModel>> GetElasticSearchById(int propertyId)
+        {
+            var property = await _context.Properties.FindAsync(propertyId);
+            var propertyImage = await _context.PropertyImages.FirstOrDefaultAsync(x => x.PropertyId == propertyId);
+
+            var query = from p in _context.Properties
+                        join w in _context.Wards on p.WardId equals w.Id
+                        join tt in _context.TypeOfTransactions on p.TypeOfTransactionId equals tt.Id
+                        join tp in _context.TypeOfProperties on p.TypeOfPropertyId equals tp.Id
+                        join e in _context.EvaluationStatuses on p.EvaluationStatusId equals e.Id
+                        join dj in _context.Directions on p.HouseDirectionId equals dj.Id into directionjoined
+                        from d in directionjoined.DefaultIfEmpty()
+                        join l in _context.LegalPapers on p.LegalPapersId equals l.Id
+                        join dsj in _context.Districts on w.DistrictId equals dsj.Id into districtjoined
+                        from ds in districtjoined.DefaultIfEmpty()
+                        join pcj in _context.Provinces on ds.ProvinceId equals pcj.Id into provincejoined
+                        from pc in provincejoined.DefaultIfEmpty()
+                        join i in _context.PropertyImages on p.Id equals i.PropertyId into joined
+                        from j in (from i in joined where i.IsDefault == true select i).DefaultIfEmpty()
+                        where p.Id == propertyId
+                        select new { p, tt, tp, e, j, l, d, pc, ds };
+            var data = await query.Select(x => new PropertyViewModel()
+            {
+                Id = x.p.Id,
+                Title = x.p.Title,
+                ProvinceName = x.pc.Name,
+                DistrictName = x.ds.Name,
+                LegalPaperName = x.l.TypeOfLegalPapers,
+                Area = x.p.Area,
+                AreaFrom = x.p.AreaFrom,
+                AreaTo = x.p.AreaTo,
+                Length = x.p.Length,
+                Width = x.p.Width,
+                Facade = x.p.Facade,
+                Price = x.p.Price,
+                PriceFrom = x.p.PriceFrom,
+                PriceTo = x.p.PriceTo,
+                Description = x.p.Description,
+                NumberOfStoreys = x.p.NumberOfStoreys,
+                NumberOfBedrooms = x.p.NumberOfBedrooms,
+                NumberOfWCs = x.p.NumberOfWCs,
+                DirectionName = x.d.DirectionName,
+                TypeOfPropertyName = x.tp.TypeOfPropertyName,
+                EvaluationStatusName = x.e.EvaluationStatusName,
+                LinkName = x.j.LinkName,
+                Lat = x.p.Lat,
+                Lng = x.p.Lng,
+                ContactName = x.p.ContactName,
+                EmailContact = x.p.EmailContact,
+                ContactPhone = x.p.ContactPhone,
+                Status = x.p.Status
+            }).ToListAsync();
+            return data;
+        }
+
+        public async Task<bool> UpdateIsDelete(int propertyId, bool delete)
+        {
+            var property = await _context.Properties.FindAsync(propertyId);
+            if (property == null) throw new RealEstateException($"Không thể tìm thấy mã: {propertyId}");
+            property.IsDelete = delete;
+            return await _context.SaveChangesAsync() > 0;
+        }
+
+        private async Task<bool> validateCaptchaAsync(string captchares)
+        {
+            object jres = new object();
+            if (String.IsNullOrEmpty(captchares))
+            {
+                return false;
+            }
+            string secret_key = "6LcoSAEVAAAAAKkUicWjcqefDkcoKuEOz-FMFGv9";
+            if (string.IsNullOrEmpty(secret_key))
+            {
+                return false;
+            }
+            var content = new FormUrlEncodedContent(new[]
+              {
+                new KeyValuePair<string, string>("secret",  secret_key),
+                new KeyValuePair<string, string>("response", captchares)
+              });
+            HttpClient client = new HttpClient();
+            var res = await client.PostAsync("https://www.google.com/recaptcha/api/siteverify", content);
+            captchaResult captchaRes = JsonConvert.DeserializeObject<captchaResult>(res.Content.ReadAsStringAsync().Result);
+
+            if (!captchaRes.success)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

@@ -10,7 +10,8 @@ namespace RealEstate.Application.Common
     public class FileStorageService : IStorageService
     {
         private readonly string _userContentFolder;
-        private const string USER_CONTENT_FOLDER_NAME = @"..\..\..\..\RealEstate\src\assets\uploadimg";
+        private const string USER_CONTENT_FOLDER_NAME = @"..\..\..\..\RealEstate\src\assets\uploadimg";//lưu file ra bên ngoài solution
+        //private const string USER_CONTENT_FOLDER_NAME = "user-conent";//Lưu trong file nội bộ
 
         public FileStorageService(IWebHostEnvironment webHostEnvironment)
         {

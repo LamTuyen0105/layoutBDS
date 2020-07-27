@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
-import { CommonService } from 'src/app/Core/Service/Common.service';
+import { ElasticSearchService } from 'src/app/Core/ElasticSearch/ElasticSearch.service';
 @Component({
   selector: 'app-Search',
   templateUrl: './Search.component.html',
@@ -9,19 +9,45 @@ import { CommonService } from 'src/app/Core/Service/Common.service';
 })
 export class SearchComponent implements OnInit {
 
-  HotSellProperties = [];
+  Properties: any[];
+  formData = {
+    page: 1,
+    pageSize: 18,
+    query: '',
+    isDelete: false
+}
+  totalRow: number;
+  image: string;
+  title: string;
 
-  constructor(private router: Router, private service: CommonService) { }
+  constructor(private router: Router, private service: ElasticSearchService, private currentRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.service.getHotSellProperties().subscribe(res => this.HotSellProperties = res as []);
+    this.getPageFromService(this.formData.page);
+    let finds = this.currentRoute.snapshot.paramMap.get('find');
+    this.title = finds;
   }
+
+  getPageFromService(pages) {
+    this.formData.page = pages-1;
+    let finds = this.currentRoute.snapshot.paramMap.get('find');
+    this.formData.query = finds;
+    this.service.ElasticSearch(this.formData).subscribe((response: any) => {
+      this.Properties = response.results;
+      this.totalRow = response.total;
+    });
+    window.scroll(0,0);
+  }
+
   OnClick(id: number) {
-    this.router.navigate(['/ChiTiet/'+ id]);
+    this.router.navigate(['/ChiTietTimKiem/' + id]);
   }
 
-  OnClicks(){
-    this.router.navigateByUrl('/i/DangTin');
+  OnClicks() {
+    this.router.navigateByUrl('/DangTin');
   }
 
+  subStr(data: string){
+    return (data.substring(0,4)) !== 'http';
+  }
 }
