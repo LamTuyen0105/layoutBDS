@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 // import * as $ from "jquery";
 
 import { CommonService } from 'src/app/Core/Service/Common.service';
-import { Console } from 'console';
 
 @Component({
   selector: 'app-Home',

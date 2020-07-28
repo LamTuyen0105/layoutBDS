@@ -886,6 +886,31 @@ input[type=file] {
     border-color: 1px solid #D4D4D4;
 }
 
+.paginations {
+    display: inline-block;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.paginations a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #D4D4D4;
+    background-color: #FFFFFF;
+    margin: 0 1px;
+}
+
+.paginations a.active {
+    background-color: #F67D0F;
+    color: white;
+    border: 1px solid #F67D0F;
+}
+
+.paginations a:hover:not(.active) {background-color: #ddd;}
+
 .btnshare{
     color: #fff;
     border-radius: 2px ;

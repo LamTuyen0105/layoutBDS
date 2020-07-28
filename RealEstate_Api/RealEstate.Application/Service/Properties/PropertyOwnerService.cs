@@ -212,11 +212,16 @@ namespace RealEstate.Application.Service.NewsManagers
                         join w in _context.Wards on p.WardId equals w.Id
                         join tt in _context.TypeOfTransactions on p.TypeOfTransactionId equals tt.Id
                         join tp in _context.TypeOfProperties on p.TypeOfPropertyId equals tp.Id
-                        join e in _context.EvaluationStatuses on p.EvaluationStatusId equals e.Id
-                        join d in _context.Directions on p.HouseDirectionId equals d.Id
-                        join l in _context.LegalPapers on p.LegalPapersId equals l.Id
-                        join ds in _context.Districts on w.DistrictId equals ds.Id
-                        join pc in _context.Provinces on ds.ProvinceId equals pc.Id
+                        join ej in _context.EvaluationStatuses on p.EvaluationStatusId equals ej.Id into evaluationjoined
+                        from e in evaluationjoined.DefaultIfEmpty()
+                        join dj in _context.Directions on p.HouseDirectionId equals dj.Id into directionjoined
+                        from d in directionjoined.DefaultIfEmpty()
+                        join lj in _context.LegalPapers on p.LegalPapersId equals lj.Id into legaljoined
+                        from l in legaljoined.DefaultIfEmpty()
+                        join dsj in _context.Districts on w.DistrictId equals dsj.Id into districtjoined
+                        from ds in districtjoined.DefaultIfEmpty()
+                        join pcj in _context.Provinces on ds.ProvinceId equals pcj.Id into provincejoined
+                        from pc in provincejoined.DefaultIfEmpty()
                         join i in _context.PropertyImages on p.Id equals i.PropertyId into joined
                         from j in (from i in joined where i.IsDefault == true select i).DefaultIfEmpty()
                         where p.Id == propertyId
@@ -899,10 +904,12 @@ namespace RealEstate.Application.Service.NewsManagers
                         join w in _context.Wards on p.WardId equals w.Id
                         join tt in _context.TypeOfTransactions on p.TypeOfTransactionId equals tt.Id
                         join tp in _context.TypeOfProperties on p.TypeOfPropertyId equals tp.Id
-                        join e in _context.EvaluationStatuses on p.EvaluationStatusId equals e.Id
+                        join ej in _context.EvaluationStatuses on p.EvaluationStatusId equals ej.Id into evaluationjoined
+                        from e in evaluationjoined.DefaultIfEmpty()
                         join dj in _context.Directions on p.HouseDirectionId equals dj.Id into directionjoined
                         from d in directionjoined.DefaultIfEmpty()
-                        join l in _context.LegalPapers on p.LegalPapersId equals l.Id
+                        join lj in _context.LegalPapers on p.LegalPapersId equals lj.Id into legaljoined
+                        from l in legaljoined.DefaultIfEmpty()
                         join dsj in _context.Districts on w.DistrictId equals dsj.Id into districtjoined
                         from ds in districtjoined.DefaultIfEmpty()
                         join pcj in _context.Provinces on ds.ProvinceId equals pcj.Id into provincejoined
